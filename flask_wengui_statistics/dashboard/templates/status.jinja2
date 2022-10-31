@@ -1,0 +1,75 @@
+{% extends "dashboard_layout.jinja2" %}
+{# content #}
+{% block content %}
+<div class="row text-center my-3">
+  <h3 class="col-sm-12">{{ sub_title }}</h3>
+</div>
+{# status_normal #}
+<div class="form-out">
+  <form action="{{ request.path }}" method="post">
+    {{ form.csrf_token }}
+    <div class="row my-3 content-row">
+      <div class="col-sm-5">
+        {{ form.normal.label }}
+        {{ form.normal }}
+      </div>
+      <div class="col-sm-2">{{ form.submit }}</div>
+      <div class="col-sm-5">
+        {{ form.status_normal.label }}
+        {{ form.status_normal }}
+      </div>
+    </div>
+  </form>
+
+  {# status_pending #}
+
+  <form action="{{ request.path }}" method="post">
+    {{ form.csrf_token }}
+    <div class="row my-3 content-row">
+      <div class="col-sm-5">
+        {{ form.pending.label }}
+        {{ form.pending }}
+      </div>
+      <div class="col-sm-2">{{ form.submit }}</div>
+      <div class="col-sm-5">
+        {{ form.status_pending.label }}
+        {{ form.status_pending }}
+      </div>
+    </div>
+  </form>
+
+  {# read #}
+
+  <form action="{{ request.path }}" method="post">
+    {{ form.csrf_token }}
+    <div class="row my-3 content-row">
+      <div class="col-sm-5">
+        {{ form.read.label }}
+        {{ form.read }}
+      </div>
+      <div class="col-sm-2">{{ form.submit }}</div>
+      <div class="col-sm-5">
+        {{ form.status_read.label }}
+        {{ form.status_read }}
+      </div>
+    </div>
+  </form>
+
+  {# status_locked #}
+
+  <form action="{{ request.path }}" method="post">
+    {{ form.csrf_token }}
+    <div class="row my-3 content-row">
+      <div class="col-sm-5">
+        {{ form.locked.label }}
+        {{ form.locked }}
+      </div>
+      <div class="col-sm-2">{{ form.submit }}</div>
+      <div class="col-sm-5">
+        {{ form.status_locked.label }}
+        {{ form.status_locked }}
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,76 @@
+{% extends "auth_layout.jinja2" %}
+{% block page_styles %}
+{% assets "index_style_bundle" %}
+<link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css" />
+{% endassets %}
+{% assets "auth_style_bundle" %}
+<link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css" />
+{% endassets %}
+{% endblock page_styles %}
+{% block content %}
+{# <div class="container"> #}
+  <div class="banner mx-5 mt-5">
+    <a href={{ url_for(auth_back) }} class="px-4">返回登录</a>
+  </div>
+  <section>
+    <div class="auth">
+      <h4>注册</h4>
+      <form method="post" action="/signup">
+        {{ form.csrf_token }}
+        <fieldset>
+          {{ form.name.label }}
+          {{ form.name() }}
+          {% if form.name.errors %}
+          <ul class="errors">
+            {% for error in form.email.errors %}<li>{{ error }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+        </fieldset>
+        <fieldset class="my-3">
+          {{ form.email.label }}
+          {{ form.email() }}
+          {% if form.email.errors %}
+          <ul class="errors">
+            {% for error in form.email.errors %}<li>{{ error }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+        </fieldset>
+        <fieldset class="my-3">
+          {{ form.password.label }}
+          {{ form.password }}
+          {% if form.email.errors %}
+          <ul class="errors">
+            {% for error in form.password.errors %}<li>{{ error }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+        </fieldset>
+        <fieldset class="my-3">
+          {{ form.confirm.label }}
+          {{ form.confirm }}
+          {% if form.confirm.errors %}
+          <ul class="errors">
+            {% for error in form.confirm.errors %}<li>{{ error }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+        </fieldset>
+        {# {% for message in get_flashed_messages() %}
+        <div class="alert alert-success d-flex align-items-center alert-dismissible fade show text-success" role="alert"
+          style="background-image: radial-gradient(circle farthest-corner at center center,#161e6c 5%,#fff 90%); color: white;">
+          <button type="button" class="btn-close" data-dismiss="alert" style="color: white;"
+            aria-label="Close"></button>
+          {{ message }}
+        </div>
+        {% endfor %} #}
+        {% block flash_message %}
+        {% endblock flash_message %}
+        <div class="submit-button py-4">{{ form.submit }}</div>
+      </form>
+    </div>
+  </section>
+  <div class="team mx-5 py-3">
+    <p>{{ team }}</p>
+  </div>
+  {#
+</div> #}
+{# {% include 'js.jinja2' %} #}
+{% endblock content %}

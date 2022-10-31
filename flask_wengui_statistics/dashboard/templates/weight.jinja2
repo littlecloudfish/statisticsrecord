@@ -1,0 +1,389 @@
+{% extends "dashboard_layout.jinja2" %}
+{# content #}
+{% block content %}
+<div class="row text-center my-3">
+  <h3 class="col-sm-12">{{ sub_title }}</h3>
+</div>
+<div class="form-out mt-4">
+  <form action="{{ request.path }}" method="post">
+    <div class="row">
+      <div class="col-sm-6">
+        {{ form.mic_plan.label }}
+        <span></span><span>%</span>
+        {{ form.mic_plan }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.mic_edit.label }}
+        <span></span><span>%</span>
+        {{ form.mic_edit }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.mic_audit.label }}
+        <span></span><span>%</span>
+        {{ form.mic_audit }}
+      </div>
+
+      <div class="col-sm-6">
+        {{ form.mic_dubb.label }}
+        <span></span><span>%</span>
+        {{ form.mic_dubb }}
+      </div>
+
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.mic_trans.label }}
+        <span></span><span>%</span>
+        {{ form.mic_trans }}
+      </div>
+
+      <div class="col-sm-6">
+        {{ form.mic_check.label }}
+        <span></span><span>%</span>
+        {{ form.mic_check }}
+      </div>
+
+    </div>
+    {# #}
+    <div class="col-sm-12 mt-5 d-flex justify-content-between">
+      <div class="col-sm-2">
+        <h5 class="fw-bolder">{{ form.mic_name }}</h5>
+      </div>
+      <div class="col-sm-2 text-danger">
+        <h5 class="d-inline">总权重:</h5>
+        <h5 class="d-inline" id="{{ form.mic_id }}"></h5>
+      </div>
+      <div class="col-sm-2">{{ form.mic_submit }}</div>
+    </div>
+  </form>
+</div>
+<hr />
+<div class="form-out mt-4">
+  <form action="{{ request.path }}" method="post">
+    <div class="row">
+      <div class="col-sm-6">
+        {{ form.sim_plan.label }}
+        <span></span><span>%</span>
+        {{ form.sim_plan }}
+      </div>
+
+      <div class="col-sm-6">
+        {{ form.sim_edit.label }}
+        <span></span><span>%</span>
+        {{ form.sim_edit }}
+      </div>
+
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.sim_audit.label }}
+        <span></span><span>%</span>
+        {{ form.sim_audit }}
+      </div>
+
+      <div class="col-sm-6">
+        {{ form.sim_dubb.label }}
+        <span></span><span>%</span>
+        {{ form.sim_dubb }}
+      </div>
+
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.sim_trans.label }}
+        <span></span><span>%</span>
+        {{ form.sim_trans }}
+      </div>
+
+      <div class="col-sm-6">
+        {{ form.sim_check.label }}
+        <span></span><span>%</span>
+        {{ form.sim_check }}
+      </div>
+
+    </div>
+    {# #}
+    <div class="col-sm-12 mt-5 d-flex justify-content-between">
+      <div class="col-sm-2">
+        <h5 class="fw-bolder">{{ form.sim_name }}</h5>
+      </div>
+      <div class="col-sm-2 text-danger">
+        <h5 class="d-inline">总权重:</h5>
+        <h5 class="d-inline" id="{{ form.sim_id }}"></h5>
+      </div>
+      <div class="col-sm-2">{{ form.sim_submit }}</div>
+    </div>
+  </form>
+</div>
+<hr />
+<div class="form-out mt-4">
+  <form action="{{ request.path }}" method="post">
+    <div class="row">
+      <div class="col-sm-6">
+        {{ form.ref_plan.label }}
+        <span></span><span>%</span>
+        {{ form.ref_plan }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.ref_edit.label }}
+        <span></span><span>%</span>
+        {{ form.ref_edit }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.ref_audit.label }}
+        <span></span><span>%</span>
+        {{ form.ref_audit }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.ref_dubb.label }}
+        <span></span><span>%</span>
+        {{ form.ref_dubb }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.ref_trans.label }}
+        <span></span><span>%</span>
+        {{ form.ref_trans }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.ref_check.label }}
+        <span></span><span>%</span>
+        {{ form.ref_check }}
+      </div>
+
+    </div>
+    {# #}
+    <div class="col-sm-12 mt-5 d-flex justify-content-between">
+      <div class="col-sm-2">
+        <h5 class="fw-bolder">{{ form.ref_name }}</h5>
+      </div>
+      <div class="col-sm-2 text-danger">
+        <h5 class="d-inline">总权重:</h5>
+        <h5 class="d-inline" id="{{ form.ref_id }}"></h5>
+      </div>
+      <div class="col-sm-2">{{ form.ref_submit }}</div>
+    </div>
+  </form>
+</div>
+<hr />
+<div class="form-out mt-4">
+  <form action="{{ request.path }}" method="post">
+    <div class="row">
+      <div class="col-sm-6">
+        {{ form.crt_plan.label }}
+        <span></span><span>%</span>
+        {{ form.crt_plan }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.crt_edit.label }}
+        <span></span><span>%</span>
+        {{ form.crt_edit }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.crt_audit.label }}
+        <span></span><span>%</span>
+        {{ form.crt_audit }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.crt_dubb.label }}
+        <span></span><span>%</span>
+        {{ form.crt_dubb }}
+      </div>
+
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.crt_trans.label }}
+        <span></span><span>%</span>
+        {{ form.crt_trans }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.crt_check.label }}
+        <span></span><span>%</span>
+        {{ form.crt_check }}
+      </div>
+    </div>
+    {# #}
+    <div class="col-sm-12 mt-5 d-flex justify-content-between">
+      <div class="col-sm-2">
+        <h5 class="fw-bolder">{{ form.crt_name }}</h5>
+      </div>
+      <div class="col-sm-2 text-danger">
+        <h5 class="d-inline">总权重:</h5>
+        <h5 class="d-inline" id="{{ form.crt_id }}"></h5>
+      </div>
+      <div class="col-sm-2">{{ form.crt_submit }}</div>
+    </div>
+  </form>
+</div>
+<hr />
+<div class="form-out mt-4">
+  <form action="{{ request.path }}" method="post">
+    <div class="row">
+      <div class="col-sm-6">
+        {{ form.rcd_plan.label }}
+        <span></span><span>%</span>
+        {{ form.rcd_plan }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.rcd_edit.label }}
+        <span></span><span>%</span>
+        {{ form.rcd_edit }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.rcd_audit.label }}
+        <span></span><span>%</span>
+        {{ form.rcd_audit }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.rcd_dubb.label }}
+        <span></span><span>%</span>
+        {{ form.rcd_dubb }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.rcd_trans.label }}
+        <span></span><span>%</span>
+        {{ form.rcd_trans }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.rcd_check.label }}
+        <span></span><span>%</span>
+        {{ form.rcd_check }}
+      </div>
+    </div>
+    {# #}
+    <div class="col-sm-12 mt-5 d-flex justify-content-between">
+      <div class="col-sm-2">
+        <h5 class="fw-bolder">{{ form.rcd_name }}</h5>
+      </div>
+      <div class="col-sm-2 text-danger">
+        <h5 class="d-inline">总权重:</h5>
+        <h5 class="d-inline" id="{{ form.rcd_id }}"></h5>
+      </div>
+      <div class="col-sm-2">{{ form.rcd_submit }}</div>
+    </div>
+  </form>
+</div>
+<hr />
+<div class="form-out mt-4">
+  <form action="{{ request.path }}" method="post">
+    <div class="row">
+      <div class="col-sm-6">
+        {{ form.ugt_plan.label }}
+        <span></span><span>%</span>
+        {{ form.ugt_plan }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.ugt_edit.label }}
+        <span></span><span>%</span>
+        {{ form.ugt_edit }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.ugt_audit.label }}
+        <span></span><span>%</span>
+        {{ form.ugt_audit }}
+      </div>
+
+      <div class="col-sm-6">
+        {{ form.ugt_dubb.label }}
+        <span></span><span>%</span>
+        {{ form.ugt_dubb }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.ugt_trans.label }}
+        <span></span><span>%</span>
+        {{ form.ugt_trans }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.ugt_check.label }}
+        <span></span><span>%</span>
+        {{ form.ugt_check }}
+      </div>
+    </div>
+    {# #}
+    <div class="col-sm-12 mt-5 d-flex justify-content-between">
+      <div class="col-sm-2">
+        <h5 class="fw-bolder">{{ form.ugt_name }}</h5>
+      </div>
+      <div class="col-sm-2 text-danger">
+        <h5 class="d-inline">总权重:</h5>
+        <h5 class="d-inline" id="{{ form.ugt_id }}"></h5>
+      </div>
+      <div class="col-sm-2">{{ form.ugt_submit }}</div>
+    </div>
+  </form>
+</div>
+<hr />
+<div class="form-out mt-4">
+  <form action="{{ request.path }}" method="post">
+    <div class="row">
+      <div class="col-sm-6">
+        {{ form.cht_plan.label }}
+        <span></span><span>%</span>
+        {{ form.cht_plan }}
+      </div>
+
+      <div class="col-sm-6">
+        {{ form.cht_edit.label }}
+        <span></span><span>%</span>
+        {{ form.cht_edit }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.cht_audit.label }}
+        <span></span><span>%</span>
+        {{ form.cht_audit }}
+      </div>
+
+      <div class="col-sm-6">
+        {{ form.cht_dubb.label }}
+        <span></span><span>%</span>
+        {{ form.cht_dubb }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-6">
+        {{ form.cht_trans.label }}
+        <span></span><span>%</span>
+        {{ form.cht_trans }}
+      </div>
+
+      <div class="col-sm-6">
+        {{ form.cht_check.label }}
+        <span></span><span>%</span>
+        {{ form.cht_check }}
+      </div>
+
+    </div>
+    {# #}
+    <div class="col-sm-12 mt-5 d-flex justify-content-between">
+      <div class="col-sm-2">
+        <h5 class="fw-bolder">{{ form.cht_name }}</h5>
+      </div>
+      <div class="col-sm-2 text-danger">
+        <h5 class="d-inline">总权重:</h5>
+        <h5 class="d-inline" id="{{ form.cht_id }}"></h5>
+      </div>
+      <div class="col-sm-2">{{ form.cht_submit }}</div>
+    </div>
+  </form>
+</div>
+<hr />
+{% endblock content %}

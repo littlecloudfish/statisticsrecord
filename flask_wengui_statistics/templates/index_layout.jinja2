@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  {% include 'index_head.jinja2' %}
+  {% block page_styles %}
+  {% endblock page_styles %}
+  <title>{{ title }} | 新中国联邦</title>
+</head>
+
+<body class="{{ template }}">
+  {% block content %}
+  {% endblock content %}
+  <script src="{{ url_for('static', filename='dist/js/index.min.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+{% extends "dashboard_layout.jinja2" %}
+{# content #}
+{% block content %}
+<div class="row text-center my-3">
+  <h3 class="col-sm-12">{{ sub_title }}</h3>
+</div>
+
+<div class="mt-3">
+  <table class="table table-striped caption-top-">
+    <div class="text-black text-end d-flex justify-content-between">
+      <h6 class=" fs-5">{{ ''.join([current_user.name, ' - ', current_user.email.upper(),' - ',current_user.team_name]) if is_member
+        else
+        ''.join([current_user.name, ' - ', current_user.email.upper()]) }}</h6>
+      <h6 class=" fs-5">我的总积分:<b>{{ utils['my_points'](submits,is_member) }}</b></h6>
+    </div>
+    <thead>
+      <tr>
+        <th>作品标题</th>
+        <th>作品类别</th>
+        <th>全球代码</th>
+        <th>战队代码</th>
+        <th>链接</th>
+        <th>网盘链接</th>
+        <th>策划</th>
+        <th>文案编辑</th>
+        <th>文案审核</th>
+        <th>配音</th>
+        <th>翻译</th>
+        <th>翻译校对</th>
+        <th>注释</th>
+        <th>提交状态</th>
+        <th>提交日期</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for submit in submits|sort(attribute='submit_status.name', reverse=False)%}
+      <tr>
+        <td data-bs-toggle="tooltip" data-bs-placement="top" title="{{ submit.title }}">{{
+          utils['text_short'](submit.title, 6,
+          '...') if
+          submit.title != None else "" }}</td>
+        <td>{{ submit.category.name }}</td>
+        <td class="text-nowrap">{{ submit.global_code }}</td>
+        <td class="text-nowrap">{{ submit.team_code }}</td>
+        <td class="text-center" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ submit.link }}"><a
+            href="{{ submit.link }}" target="_blank">{{ '<i class="bx bx-link" style="color:red"></i>' if submit.link !=
+            None
+            }}</a></td>
+        <td class="text-center" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ submit.disk_link }}"><a
+            href="{{ submit.disk_link }}" target="_blank">{{ '<i class="bx bxs-disc" style="color:red"></i>' if
+            submit.disk_link
+            != None }}</a></td>
+        {# 策划, 文案编辑, 文案审核, 配音, 翻译, 翻译校对 #}
+        <td>{{ utils['my_operation_points'](submit, '策划<', is_member) }}</td>
+        <td>{{ utils['my_operation_points'](submit, '编辑<', is_member) }}</td>
+        <td>{{ utils['my_operation_points'](submit, '审核<', is_member) }}</td>
+        <td>{{ utils['my_operation_points'](submit, '配音<', is_member) }}</td>
+        <td>{{ utils['my_operation_points'](submit, '翻译<', is_member) }}</td>
+        <td>{{ utils['my_operation_points'](submit, '校对<', is_member) }}</td>
+
+        <td data-bs-toggle="tooltip" data-bs-placement="top" title="{{ submit.comment }}">{{
+          utils['text_short'](submit.comment,
+          10, '...') if
+          submit.comment != None else "" }}</td>
+        <td>{{ submit.submit_status.name }}</td>
+        <td>{{ submit.created_on.strftime("%m-%d-%Y %H:%M:%S") }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}

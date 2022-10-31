@@ -1,0 +1,30 @@
+{% extends "index_layout.jinja2" %}
+{% block page_styles %}
+{% assets "index_style_bundle" %}
+<link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css" />
+{% endassets %}
+{% endblock page_styles %}
+{% block content %}
+{# <video autoplay muted loop id="myVideo">
+  <source src="/static/dist/video/wave_s.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video> #}
+{# <header class="banner mx-5 mt-5">
+  <span class="app-name">{{ title }}</span>
+  <a href={{ login }}>
+    <input type="button" class="login" value="登录" />
+  </a>
+</header> #}
+{# <div class="container"> #}
+  <div class="banner mx-5 mt-5">
+    <p class="app-name">{{ title }}</p>
+    <a href={{ login }} class="px-4">登录</a>
+  </div>
+  <section>
+  </section>
+  <div class="team mx-5 mb-5">
+    <p>{{ team }}</p>
+  </div>
+  {#
+</div> #}
+{% endblock content %}

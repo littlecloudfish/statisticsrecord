@@ -1,0 +1,11 @@
+{# #}
+{% block flash_message %}
+{% for category, message in get_flashed_messages(with_categories=true) %}
+<div class="alert alert-success d-flex align-items-center alert-dismissible fade show text-success flash-{{category}}"
+  role="alert" style="background-image: radial-gradient(circle farthest-corner at center center,#161e6c 5%,#fff 90%);
+                color: whitesmoke;">
+  <button type="button" class="btn-close" data-dismiss="alert" style="color: whitesmoke;" aria-label="Close"></button>
+  <span>{{ message }}</span>
+</div>
+{% endfor %}
+{% endblock flash_message %}

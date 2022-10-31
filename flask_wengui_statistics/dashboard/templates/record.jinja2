@@ -1,0 +1,48 @@
+{% extends "dashboard_layout.jinja2" %}
+{# content #}
+{% block content %}
+<div class="row text-center my-3">
+  <h3 class="col-sm-12">{{ sub_title }}</h3>
+</div>
+
+<div class="form-out">
+  <div class="mt-3">
+    <table class="table table-striped caption-top">
+      <caption class="text-black text-end fs-5">
+        <h6>总访问记录:<b>{{ utils['access_sum'](records) }}</b></h6>
+      </caption>
+      <thead>
+        <tr>
+          <th>页面</th>
+          <th>IP</th>
+          <th>来源</th>
+          <th>时区</th>
+          <th>定位</th>
+          <th>ISP</th>
+          <th>方式</th>
+          <th>次数</th>
+          <th>最近时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in records %}
+        <tr>
+          <td>{{ record.page }}</td>
+          <td>{{ record.ip }}</td>
+          <td>{{ record.city }}/{{ record.region }}/{{ record.country_name }}</td>
+          <td>{{ record.timezone }}</td>
+          {# https://www.google.com/maps/search/?api=1&query=45.5422,-73.5445 #}
+          <td align="center"><a
+              href="https://www.google.com/maps/search/?api=1&query={{ record.latitude }},{{ record.longitude }}"
+              target="_blank"><i class="bx bxs-location-plus bx-flashing" style="color:red"></i></a></td>
+          <td>{{ record.org }}</td>
+          <td>{{ record.browser }}</td>
+          <td>{{ record.total }}</td>
+          <td>{{ record.latest.strftime("%m-%d-%Y %H:%M:%S") }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}

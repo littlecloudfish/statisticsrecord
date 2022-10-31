@@ -1,0 +1,85 @@
+{% extends "dashboard_layout.jinja2" %}
+{# content #}
+{% block content %}
+<div class="row text-center my-3">
+  <h3 class="col-sm-12">{{ sub_title }}</h3>
+</div>
+
+<div class="mt-3">
+  <table class="table table-striped caption-top">
+    <caption class="text-black fs-5">黑名单</caption>
+    <thead>
+      <tr>
+        <th>IP</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ip_blk in list_black %}
+      <tr>
+        <td>{{ ip_blk.ip }}</td>
+        <td>{{ ip_blk.note }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="form-out mb-5">
+  <form action="{{ request.path }}" method="post">
+    <div class="row align-items-end">
+      <div class="col-sm-5">
+        {{ form.black.label }}
+        {{ form.black }}
+      </div>
+      <div class="col-sm-5">
+        {{ form.black_note.label }}
+        {{ form.black_note }}
+      </div>
+      <div class="col-sm-2 submit-button">
+        {{ form.submit_black }}
+      </div>
+    </div>
+  </form>
+</div>
+<hr />
+
+<div class="mt-3">
+  <table class="table table-striped caption-top">
+    <caption class="text-black fs-5">白名单</caption>
+    <thead>
+      <tr>
+        <th>IP</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ip_wte in list_white %}
+      <tr>
+        <td>{{ ip_wte.ip }}</td>
+        <td>{{ ip_wte.note }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="form-out mb-5">
+  <form action="{{ request.path }}" method="post">
+    <div class="row align-items-end">
+      <div class="col-sm-5">
+        {{ form.white.label }}
+        {{ form.white }}
+      </div>
+      <div class="col-sm-5">
+        {{ form.white_note.label }}
+        {{ form.white_note }}
+      </div>
+      <div class="col-sm-2 submit-button">
+        {{ form.submit_white }}
+      </div>
+    </div>
+  </form>
+</div>
+<hr />
+
+{% endblock content %}

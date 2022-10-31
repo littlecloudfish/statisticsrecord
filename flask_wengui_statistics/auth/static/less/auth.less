@@ -1,0 +1,130 @@
+@import '../../../static/src/css/global_vars.less';
+
+// @import 'vars.less';
+
+.auth-template {
+  overflow: hidden;
+
+  .auth {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25rem;
+    padding: 1.5rem 2.5rem;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 17px rgb(240, 231, 231);
+  }
+
+  ul.errors li {
+    color: red;
+  }
+
+  .auth h4 {
+    margin: 0 0 1rem;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-family: @font-body;
+  }
+
+  .banner input {
+    background-color: transparent;
+    color: whitesmoke;
+  }
+
+  fieldset label {
+    display: block;
+    color: whitesmoke;
+
+    font-size: @label-size;
+    font-family: @font-body;
+  }
+
+  fieldset label a {
+    text-decoration: none;
+  }
+
+  .auth input {
+    border: none;
+    font-family: @font-body;
+    font-size: @input-size;
+    letter-spacing: 2px;
+  }
+
+  .auth input[type="password"] {
+    letter-spacing: 6px;
+  }
+
+  .auth input[type="submit"] {
+    color: @color-nfsc;
+    border: none;
+    background-color: @color-gold;
+    cursor: pointer;
+    width: 100%;
+    font-size: @label-size;
+  }
+
+
+  .alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    font-family: @font-body;
+
+    button.close {
+      padding: 0;
+      background-color: transparent;
+      border: 0;
+      -webkit-appearance: none;
+      float: right;
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: #000;
+      text-shadow: 0 1px 0 #fff;
+      opacity: .4;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+
+  .alert-warning {
+    color: whitesmoke;
+    background-color: @color-nfsc;
+    font-weight: 300;
+    font-size: .8em;
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 600px) {
+      padding: 10px 15px;
+    }
+
+    .close {
+      color: #856404;
+      font-weight: 300;
+      order: 1;
+      outline: none !important;
+      transition: @transition;
+    }
+  }
+
+  @media only screen and (max-width: 576px) {
+
+    /* For desktop: */
+    .auth {
+      width: 100%;
+      // margin: auto 15px;
+    }
+  }
+}

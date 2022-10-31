@@ -1,0 +1,98 @@
+{% extends "dashboard_layout.jinja2" %}
+{# content #}
+{% block content %}
+<div class="row text-center my-3">
+  <h3 class="col-sm-12">{{ sub_title }}</h3>
+</div>
+<div class="row form-full">
+  <form action="{{ request.path }}" method="post">
+    {# {{ form.csrf_token }} #}
+    {{ form.hidden_tag() }}
+    {% if is_submit == False %}
+    <div class="col-sm-12 d-flex justify-content-around mt-5">
+      {% for option in form.option %}
+      <div class="form-check text-primary fs-5">
+        <tr>
+          <td>{{ option }}</td>
+          <td>{{ option.label }}</td>
+        </tr>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="row mt-4">
+      <div class="col-sm-6">
+        {{ form.title.label }}
+        {{ form.title }}
+      </div>
+      <div class="col-sm-6">
+        {{ form.length.label }}
+        {{ form.length }}
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-sm-12">
+        {{ form.disk_link.label }}
+        {{ form.disk_link }}
+      </div>
+    </div>
+    <div class="row mt-4 mb-5">
+      <div class="col-sm-12">
+        {{ form.link.label }}
+        {{ form.link }}
+      </div>
+    </div>
+    <hr />
+    {# #}
+    <div class="row mt-5">
+      <div class="col-sm-12">
+        {{ form.plan.label }}
+        {{ form.plan }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-12">
+        {{ form.edit.label }}
+        {{ form.edit }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-12">
+        {{ form.audit.label }}
+        {{ form.audit }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-12">
+        {{ form.dubb.label }}
+        {{ form.dubb }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-12">
+        {{ form.trans.label }}
+        {{ form.trans }}
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-12">
+        {{ form.check.label }}
+        {{ form.check }}
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-sm-12">
+        {{ form.comment.label }}
+        {{ form.comment }}
+      </div>
+    </div>
+    {% endif %}
+    {# #}
+    <div class="col-sm-12 d-flex justify-content-between mt-5 {{ 'button-adjust' if is_submit }} submit-button">
+      <div class="col-sm-3" style="visibility: {{ 'hidden' if is_initial }}">{{ form.last }}</div>
+      <div class="col-sm-3" style="visibility: {{ 'hidden' if form.data['name'] in ['音乐类型1','直播类型1','网站类型1'] }}">{{
+        form.next }}</div>
+    </div>
+  </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,61 @@
+{% extends "dashboard_layout.jinja2" %}
+{# content #}
+{% block content %}
+<div class="row text-center">
+  <h3 class="col-sm-12">{{ sub_title }}</h3>
+</div>
+{# 成员账号 #}
+<div class="form-out">
+  <form action="{{ request.path }}" method="post">
+    {{ form.csrf_token }}
+    <div class="row my-3 content-row">
+      <div class="col-sm-5">
+        {{ form.personal.label }}
+        {{ form.personal }}
+      </div>
+      <div class="col-sm-2">{{ form.submit }}</div>
+      <div class="col-sm-5">
+        {{ form.personal_type.label }}
+        {{ form.personal_type }}
+      </div>
+    </div>
+  </form>
+</div>
+{# 战队账号 #}
+<div class="form-out">
+  <form action="{{ request.path }}" method="post">
+    {{ form.csrf_token }}
+    <div class="row my-3 content-row">
+      <div class="col-sm-5">
+        {{ form.team.label }}
+        {{ form.team }}
+      </div>
+      <div class="col-sm-2">{{ form.submit }}</div>
+      <div class="col-sm-5">
+        {{ form.team_type.label }}
+        {{ form.team_type }}
+      </div>
+    </div>
+  </form>
+</div>
+
+{# 数据库管理员账号 #}
+{% if current_user.account_type.name == "数据库管理员" %}
+<div class="form-out">
+  <form action="{{ request.path }}" method="post">
+    {{ form.csrf_token }}
+    <div class="row my-3 content-row">
+      <div class="col-sm-5">
+        {{ form.admin.label }}
+        {{ form.admin }}
+      </div>
+      <div class="col-sm-2">{{ form.submit }}</div>
+      <div class="col-sm-5">
+        {{ form.admin_type.label }}
+        {{ form.admin_type }}
+      </div>
+    </div>
+  </form>
+</div>
+{% endif %}
+{% endblock content %}

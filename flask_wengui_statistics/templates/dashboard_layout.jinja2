@@ -1,0 +1,108 @@
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  {% include "dashboard_head.jinja2" %}
+  {# {% block page_styles %}
+  {% endblock page_styles %} #}
+  {% assets "dashboard_style_bundle" %}
+  <link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css" />
+  {% endassets %}
+  <title>{{ title }} | 新中国联邦</title>
+</head>
+
+<body class="{{ _vars['theme'] }}">
+  <nav class="sidebar">
+    <header>
+      <span class="image">
+        <img src="{{ url_for('static', filename='dist/img/nfsc_stretch.png') }}" alt="nsfc flag" />
+      </span>
+      <div class="text logo-text">
+        <p3 class="name">新中国联邦</p3>
+        <p4 class="profession">文贵先生大直播编辑组</p4>
+      </div>
+      <form id="form_nemo" name="form_nemo" method="get" action="/menu_toggle">
+        <input type="hidden" id="hiden" name="hiden" value="null">
+        {# <i class="bx bx-chevron-right toggle" onclick="javascript:form_nemo.submit();"></i> #}
+        <i class="bx bx-chevron-right toggle"></i>
+      </form>
+    </header>
+    {# <div class="menu-bar"> #}
+      <div class="menu">
+        <li class="search">
+          <i class="bx bx-search icon" style="font-size: 28px"></i>
+          <input type="text" placeholder="查找..." />
+        </li>
+        {% for menu in menu %}
+        <li
+          class="nav-item nav-link me-1 {{ 'active' if request.path==url_for(menu.url) }} {{ 'disabled' if menu.active == False }}">
+          <a href={{ url_for(menu.url) }}>
+            <i class="{{ menu.icon }} {{ 'bx-flashing' if request.path==url_for(menu.url)}}" type='solid'
+              style="font-size: {{ menu.isize }}; {{ 'color: red;' if request.path==url_for(menu.url)}}"></i>
+            <span class="text nav-text">{{ menu.text }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </div>
+
+      <div class="bottom-content">
+        {% if false %}
+        <li class="nav-item nav-link">
+          <a href="{{ url_for('auth_bp.logout') }}">
+            <i class="bx bx-run icon" style=`font-size: '{{ menu.isize }}' ; color: '{{ menu.icolor }}' `></i>
+            <span class="text nav-text">登出</span>
+          </a>
+        </li>
+
+        {# <form action="{{ dashboard_bp.dashboard_theme }}" method="POST"> #}
+          <li class="mode">
+            <div class="sun-moon">
+              <i class="bx bx-moon icon moon"></i>
+              <i class="bx bx-sun icon sun"></i>
+            </div>
+            <span class="mode-text text">Dark mode</span>
+            <div class="toggle-switch">
+              <span class="switch"></span>
+            </div>
+          </li>
+          {% endif %}
+      </div>
+      {#
+    </div> #}
+  </nav>
+  {# style="height: 100%; border: 2px solid red;" #}
+  <section class="home {{ _vars['menu'] }}">
+    <div class="banner">
+      <h3>{{ current_user.name }}, 欢迎来到文贵先生大直播统计后台</h3>
+    </div>
+    {% if not not utils['get_notice']() %}
+    <div
+      class="alert alert-success d-flex align-items-center alert-dismissible fade show text-primary bg-warning position-sticky"
+      role="alert" style="top: 60px">
+      <button type="button" class="btn-close" data-dismiss="alert" style="color: whitesmoke;"
+        aria-label="Close"></button>
+      <marquee>{{ utils['get_notice']() }}</marquee>
+    </div>
+    {% endif %}
+    {% include "flash_message.jinja2" %}
+    <div class="content-area {{ 'content-area-vh' if _height_display == 'vh' else 'content-area-auto' }}">
+      <div class="content-area-top {{ 'content-area-ccp' if _ccp_display else '' }}">
+        {% block content %}
+        {% endblock content %}
+      </div>
+
+      <footer class="content-area-bottom text-center text-dark mt-3 pt-3">
+        <h5>Copyright © {{ utils['current_year']() }} <span>新中国联邦灭共技术支持组</span></h5>
+      </footer>
+    </div>
+
+  </section>
+  {% include "dashboard_js.jinja2" %}
+  <script src="{{ url_for('static', filename='dist/js/dashboard_menu.min.js') }}"></script>
+  {% if weight_page %}
+  <script src="{{ url_for('static', filename='dist/js/dashboard_weight.min.js') }}"></script>
+  {% endif %}
+</body>
+
+</html>

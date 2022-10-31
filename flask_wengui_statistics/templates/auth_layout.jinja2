@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% include 'index_head.jinja2' %}
+  <title>{{ title }} | 新中国联邦</title>
+  {% block page_styles %}
+  {% endblock page_styles %}
+</head>
+
+<body class="{{ template }}">
+  {% block content %}
+  {% endblock content %}
+  <script src="{{ url_for('static', filename='dist/js/auth.min.js') }}"></script>
+</body>
+
+</html>
