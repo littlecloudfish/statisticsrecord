@@ -522,8 +522,8 @@ def index():
 
     return render_template(
         "index.jinja2",
-        title="战友(战队)灭共任务统计网页应用",
+        title="Count Point Web",
         template="main-template",
-        team="新中国联邦灭共技术支持小组",
+        team="Team Cooperate",
         login=url_for('auth_bp.login'),
     )

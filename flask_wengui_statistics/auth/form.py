@@ -39,9 +39,9 @@ class LoginForm(FlaskForm):
     """User Log-in Form."""
 
     email = StringField(
-        "电子邮箱", validators=[DataRequired(), Email(message="Enter a valid email.")], render_kw={'class': 'form-control mt-1 rounded-pill', 'autofocus': 'true'}
+        "Email", validators=[DataRequired(), Email(message="Enter a valid email.")], render_kw={'class': 'form-control mt-1 rounded-pill', 'autofocus': 'true'}
     )
-    password = PasswordField("登录密码", validators=[DataRequired()], render_kw={
+    password = PasswordField("Password", validators=[DataRequired()], render_kw={
                              'class': 'form-control mt-1 rounded-pill'})
     submit = SubmitField(
-        "登录", render_kw={'class': 'form-control mt-1 rounded-pill'})
+        "Login", render_kw={'class': 'form-control mt-1 rounded-pill'})

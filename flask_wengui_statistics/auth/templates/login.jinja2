@@ -10,11 +10,11 @@
 {% block content %}
 {# <div class="container"> #}
   <div class="banner mx-5 mt-5">
-    <a href={{ url_for(auth_back) }} class="px-4">返回</a>
+    <a href={{ url_for(auth_back) }} class="px-4">Back to Previous</a>
   </div>
   <section>
     <div class="auth">
-      <h4>登录</h4>
+      <h4>Login</h4>
       <form method="post" action="/login">
         {{ form.csrf_token }}
         <fieldset>
@@ -37,15 +37,13 @@
         </fieldset>
         <fieldset class="mt-3 py-3">{{ form.submit }}</fieldset>
         <fieldset class="pt-3">
-          <label>没有账号? <a href={{ url_for(signup) }}> 注册</a></label>
+          <label>No Account? <a href={{ url_for(signup) }}> Sign Up</a></label>
         </fieldset>
       </form>
     </div>
 </div>
 </section>
-<div class="team mx-5 py-3">
-  <p>{{ team }}</p>
-</div>
+
 {# </div> #}
 {# {% include 'js.jinja2' %} #}
 {% endblock content %}
