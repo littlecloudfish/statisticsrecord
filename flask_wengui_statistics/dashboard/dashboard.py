@@ -80,72 +80,72 @@ def dashboard_init():
         menu = [{"icon": "bx bx-cloud-upload icon", "isize": '28px',
                  "url": "dashboard_bp.submit_v1v2", "text": "积分申报v1", "active": True},
                 {"icon": "bx bx-credit-card-front icon", "isize": '28px',
-                 "url": "dashboard_bp.point", "text": "我的积分", "active": True},
+                 "url": "dashboard_bp.point", "text": "My Point", "active": True},
                 {"icon": "bx bxs-cog icon", "isize": '28px',
-                 "url": "dashboard_bp.setting", "text": "我的设置", "active": True},
+                 "url": "dashboard_bp.setting", "text": "My Setting", "active": True},
                 {"icon": "bx bx-run bx-flip-horizontal icon", "isize": '28px',
-                 "url": "auth_bp.logout", "text": "退出登录", "active": True}]
+                 "url": "auth_bp.logout", "text": "Logout", "active": True}]
     elif current_user.account_type.name == "积分申报成员":
         _g_account_type = E_ACCOUNT_TYPE.MEMBER
         menu = [  # {"icon": "bx bx-cloud-upload icon", "isize": '28px',
             #  "url": "dashboard_bp.submit_v1v2", "text": "积分申报v1", "active": True},
             {"icon": "bx bx-credit-card-front icon", "isize": '28px',
-             "url": "dashboard_bp.point", "text": "我的积分", "active": True},
+             "url": "dashboard_bp.point", "text": "My Point", "active": True},
             {"icon": "bx bxs-cog icon", "isize": '28px',
-             "url": "dashboard_bp.setting", "text": "我的设置", "active": True},
+             "url": "dashboard_bp.setting", "text": "My Setting", "active": True},
             {"icon": "bx bx-run bx-flip-horizontal icon", "isize": '28px',
-             "url": "auth_bp.logout", "text": "退出登录", "active": True}]
+             "url": "auth_bp.logout", "text": "Logout", "active": True}]
     elif current_user.account_type.name == "积分申报战队":
         _g_account_type = E_ACCOUNT_TYPE.TEAM
         menu = [{"icon": "bx bx-cloud-upload icon", "isize": '28px',
-                 "url": "dashboard_bp.submit_v1v2", "text": "积分申报v2", "active": True},
+                 "url": "dashboard_bp.submit_v1v2", "text": "Point Reportv2", "active": True},
                 {"icon": "bx bxs-user-detail icon", "isize": '28px',
-                 "url": "dashboard_bp.member", "text": "成员概览", "active": True},
+                 "url": "dashboard_bp.member", "text": "Team Member", "active": True},
                 {"icon": "bx bxs-cog icon", "isize": '28px',
-                 "url": "dashboard_bp.setting", "text": "我的设置", "active": True},
+                 "url": "dashboard_bp.setting", "text": "My Setting", "active": True},
                 {"icon": "bx bx-run bx-flip-horizontal icon", "isize": '28px',
-                 "url": "auth_bp.logout", "text": "退出登录", "active": True}]
+                 "url": "auth_bp.logout", "text": "Logout", "active": True}]
 
     elif current_user.account_type.name == "积分申报管理":
         _g_account_type = E_ACCOUNT_TYPE.ADMIN
         menu = [{"icon": "bx bx-cloud-upload icon", "isize": '28px',
-                 "url": "dashboard_bp.submit_v3", "text": "积分申报v3", "active": True},
+                 "url": "dashboard_bp.submit_v3", "text": "Point Reportv3", "active": True},
                 {"icon": "bx bxs-user-check icon", "isize": '28px',
-                 "url": "dashboard_bp.audit", "text": "审核处理", "active": True},
+                 "url": "dashboard_bp.audit", "text": "In Review", "active": True},
                 {"icon": "bx bx-credit-card-front icon", "isize": '28px',
-                 "url": "dashboard_bp.summary", "text": "提交统计", "active": True},
+                 "url": "dashboard_bp.summary", "text": "Submit Application", "active": True},
                 {"icon": "bx bxs-group icon", "isize": '28px',
-                 "url": "dashboard_bp.account", "text": "账号管理(类型)", "active": True},
+                 "url": "dashboard_bp.account", "text": "Account(Type)", "active": True},
                 {"icon": "bx bxs-lock-open-alt icon", "isize": '28px',
-                 "url": "dashboard_bp.status", "text": "账号管理(状态)", "active": True},
+                 "url": "dashboard_bp.status", "text": "Account(Type)", "active": True},
                 {"icon": "bx bxs-circle-three-quarter icon", "isize": '28px',
-                 "url": "dashboard_bp.weight", "text": "岗位权重", "active": True},
+                 "url": "dashboard_bp.weight", "text": "Weight of Position", "active": True},
                 {"icon": "bx bx-code-curly icon", "isize": '28px',
-                 "url": "dashboard_bp.pparameter", "text": "积分参数", "active": True},
+                 "url": "dashboard_bp.pparameter", "text": "Point Weight", "active": True},
                 {"icon": "bx bxs-cog icon", "isize": '28px',
-                 "url": "dashboard_bp.setting", "text": "我的设置", "active": True},
+                 "url": "dashboard_bp.setting", "text": "My Setting", "active": True},
                 {"icon": "bx bx-run bx-flip-horizontal icon", "isize": '28px',
-                 "url": "auth_bp.logout", "text": "退出登录", "active": True}]
+                 "url": "auth_bp.logout", "text": "Logout", "active": True}]
     else:
         _g_account_type = E_ACCOUNT_TYPE.DATA_ADMIN
         menu = [{"icon": "bx bxs-user-rectangle icon", "isize": '28px',
-                "url": "dashboard_bp.dashboard", "text": "管理员面板", "active": True},
+                "url": "dashboard_bp.dashboard", "text": "Manager Dashboard", "active": True},
                 # {"icon": "bx bxs-group icon", "isize": '28px',
                 #  "url": "dashboard_bp.account", "text": "账号管理(类型)", "active": True},
                 # {"icon": "bx bxs-lock-open-alt icon", "isize": '28px',
                 #  "url": "dashboard_bp.status", "text": "账号管理(状态)", "active": True},
                 {"icon": "bx bxs-folder-plus icon", "isize": '28px',
-                 "url": "dashboard_bp.create", "text": "账号创建", "active": True},
+                 "url": "dashboard_bp.create", "text": "Account Create", "active": True},
                 {"icon": "bx bx-transfer icon", "isize": '28px',
-                 "url": "dashboard_bp.record", "text": "访问记录", "active": True},
+                 "url": "dashboard_bp.record", "text": "Login History", "active": True},
                 {"icon": "bx bxs-pointer icon", "isize": '28px',
-                 "url": "dashboard_bp.auth_list", "text": "黑白名单", "active": True},
+                 "url": "dashboard_bp.auth_list", "text": "List of Invited", "active": True},
                 {"icon": "bx bxs-data icon", "isize": '28px',
-                 "url": "dashboard_bp.backup", "text": "数据库备份", "active": True},
+                 "url": "dashboard_bp.backup", "text": "Backup Database", "active": True},
                 {"icon": "bx bxs-cog icon", "isize": '28px',
-                 "url": "dashboard_bp.setting", "text": "我的设置", "active": True},
+                 "url": "dashboard_bp.setting", "text": "My Setting", "active": True},
                 {"icon": "bx bx-run bx-flip-horizontal icon", "isize": '28px',
-                 "url": "auth_bp.logout", "text": "退出登录", "active": True}]
+                 "url": "auth_bp.logout", "text": "Logout", "active": True}]
 
     from .. import app_ref
     if app_ref.config["FLASK_ENV"] == "development":
@@ -189,10 +189,10 @@ def create():
 
     form = CreateForm()
 
-    form.type.choices = [(0, '-- 账号类型 --')] + [(type.id, type.name)
+    form.type.choices = [(0, '-- Account Type --')] + [(type.id, type.name)
                                                for type in types]
 
-    form.team.choices = [(0, '-- 所属战队 --')] + [(team.id, team.name)
+    form.team.choices = [(0, '-- Belong Team --')] + [(team.id, team.name)
                                                for team in teams]
 
     if request.method == 'POST':
@@ -206,7 +206,7 @@ def create():
             existing_user = Account.query.filter_by(
                 email=email).first()
             if existing_user != None:
-                flash(category='error', message=u'账号已经存在!')
+                flash(category='error', message=u'Account Exists!')
             else:
                 new_account = Account(
                     name=name,
@@ -226,15 +226,15 @@ def create():
                 db.session.commit()
 
                 key_vairbles_add()
-                flash(category='success', message=u'账号{}创建成功！'.format(name))
+                flash(category='success', message=u'Account{}Created Successfully!'.format(name))
         else:
-            flash(category='error', message='输入错误!')
+            flash(category='error', message='Input Error!')
         return redirect(url_for("dashboard_bp.create"))
     return render_template(
         "create.jinja2",
 
-        title="后台管理",
-        sub_title="账号创建",
+        title="Background Management",
+        sub_title="Account Create",
 
         form=form,
         #
@@ -316,8 +316,8 @@ def record():
     return render_template(
         "record.jinja2",
 
-        title="后台管理",
-        sub_title="访问记录",
+        title="Login History",
+        sub_title="Login History",
 
         records=records,
         #
@@ -403,7 +403,7 @@ def dashboard():
     return render_template(
         "dashboard.jinja2",
         title="后台管理",
-        fkccp="Take Down The CCP.",
+        fkccp="Background Management",
 
         menu=menu,
         _vars=_vars,
@@ -795,10 +795,10 @@ def submit_v1v2():
     [menu, _vars] = dashboard_init()
 
     if 'v1' in menu[0]['text']:
-        sub_title = "任务申报v1"
+        sub_title = "Point Reportv1"
         version = 'v1'
     elif 'v2' in menu[0]['text']:
-        sub_title = "任务申报v2"
+        sub_title = "Point Reportv2"
         version = 'v2'
 
     form = VideoSubmitForm()
@@ -835,17 +835,17 @@ def submit_v1v2():
             is_submit = True
             form.next.label.text = "提交"
 
-            form.plan.choices = [('0', '-- 请选择 --')] + [
+            form.plan.choices = [('0', '-- Choose --')] + [
                 (account.id, account.name + ' <' + account.email + '>')]
-            form.edit.choices = [('0', '-- 请选择 --')] + [
+            form.edit.choices = [('0', '-- Choose --')] + [
                 (account.id, account.name + ' <' + account.email + '>')]
-            form.audit.choices = [('0', '-- 请选择 --')] + [
+            form.audit.choices = [('0', '-- Choose --')] + [
                 (account.id, account.name + ' <' + account.email + '>')]
-            form.dubb.choices = [('0', '-- 请选择 --')] + [
+            form.dubb.choices = [('0', '-- Choose --')] + [
                 (account.id, account.name + ' <' + account.email + '>')]
-            form.trans.choices = [('0', '-- 请选择 --')] + [
+            form.trans.choices = [('0', '-- Choose --')] + [
                 (account.id, account.name + ' <' + account.email + '>')]
-            form.check.choices = [('0', '-- 请选择 --')] + [
+            form.check.choices = [('0', '-- Choose --')] + [
                 (account.id, account.name + ' <' + account.email + '>')]
 
     else:
@@ -855,17 +855,17 @@ def submit_v1v2():
             is_submit = True
             form.next.label.text = "提交"
 
-            form.plan.choices = [(0, '-- 请选择成员 --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.plan.choices = [(0, '-- Choose Member --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
                                                         for member in members]
-            form.edit.choices = [(0, '-- 请选择成员 --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.edit.choices = [(0, '-- Choose Member --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
                                                         for member in members]
-            form.audit.choices = [(0, '-- 请选择成员 --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.audit.choices = [(0, '-- Choose Member --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
                                                          for member in members]
-            form.dubb.choices = [(0, '-- 请选择成员 --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.dubb.choices = [(0, '-- Choose Member --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
                                                         for member in members]
-            form.trans.choices = [(0, '-- 请选择成员 --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.trans.choices = [(0, '-- Choose Member --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
                                                          for member in members]
-            form.check.choices = [(0, '-- 请选择成员 --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.check.choices = [(0, '-- Choose Member --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
                                                          for member in members]
             #
             # submits_num = len(current_user.submits)
@@ -1053,7 +1053,7 @@ def submit_v1v2():
                 db.session.commit()
                 _submit_v1v2.clear()
 
-                flash(category='success', message="积分申报成功，感谢您为新中国联邦建设的努力！")
+                flash(category='success', message="Point Submitted Successfully")
                 if version == 'v1':
                     return redirect(url_for("dashboard_bp.point"))
                 elif version == 'v2':
@@ -1063,7 +1063,7 @@ def submit_v1v2():
         return redirect(url_for("dashboard_bp.submit_v1v2"))
     return render_template(
         "submit_v1v2.jinja2",
-        title="任务申报 | 后台管理",
+        title="Task Report",
         #
         menu=menu,
         version=version,
@@ -1900,12 +1900,12 @@ def setting():
 
         current_user.theme.id = form.theme.data
 
-        flash(category='success', message="更新成功!")
+        flash(category='success', message="Setting Successfully!")
         return redirect(url_for("dashboard_bp.setting"))
     return render_template(
         "setting.jinja2",
-        title="设置 | 后台管理",
-        sub_title="设置",
+        title="Setting | 后台管理",
+        sub_title="Setting",
         #
         menu=menu,
         _vars=_vars,
@@ -1948,33 +1948,33 @@ def auth_list():
             note = form.white_note.data
             if (is_valid_ip(ip)):
                 if bool(WhiteIP.query.filter_by(ip=ip).first()):
-                    flash(category='error', message="IP已在白名单!")
+                    flash(category='error', message="Ip is in white List!")
                 else:
                     _ip = WhiteIP(ip=ip, note=note)
 
                     db.session.add(_ip)
                     db.session.commit()
             else:
-                flash(category='error', message="IP地址无效!")
+                flash(category='error', message="Ip Invalide!")
         else:
             ip = form.black.data
             note = form.black_note.data
             if (is_valid_ip(ip)):
                 if bool(BlackIP.query.filter_by(ip=ip).first()):
-                    flash(category='error', message="IP已在黑名单!")
+                    flash(category='error', message="IP is in Black List!")
                 else:
                     _ip = BlackIP(ip=ip, note=note)
 
                     db.session.add(_ip)
                     db.session.commit()
             else:
-                flash(category='error', message="IP地址无效!")
+                flash(category='error', message="Ip Invalide!")
 
         return redirect(url_for("dashboard_bp.auth_list"))
     return render_template(
         "black_white.jinja2",
-        title="黑白IP名单 | 后台管理",
-        sub_title="黑白IP名单",
+        title="List of IP | 后台管理",
+        sub_title="List of IP",
 
         menu=menu,
         _vars=_vars,
@@ -2018,8 +2018,8 @@ def backup():
         return redirect(url_for("dashboard_bp.backup"))
     return render_template(
         "backup.jinja2",
-        title="数据库备份 | 后台管理",
-        sub_title="数据库备份",
+        title="Database Backup | 后台管理",
+        sub_title="Database Backup",
         #
         menu=menu,
         _vars=_vars,

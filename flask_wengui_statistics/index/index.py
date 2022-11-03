@@ -143,7 +143,7 @@ def ip_white_init():
     if not results:
         ips_white = ['50.72.43.125']
         for ip in ips_white:
-            _ip = WhiteIP(ip=ip, note=u'开发人员')
+            _ip = WhiteIP(ip=ip, note=u'Developer')
             db.session.add(_ip)
         db.session.commit()
 
@@ -154,7 +154,7 @@ def ip_black_init():
     if not results:
         ips_white = ['39.156.66.10']
         for ip in ips_white:
-            _ip = BlackIP(ip=ip, note=u'百度')
+            _ip = BlackIP(ip=ip, note=u'Baidu')
             db.session.add(_ip)
         db.session.commit()
 

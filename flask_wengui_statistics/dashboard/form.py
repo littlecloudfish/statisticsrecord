@@ -81,9 +81,9 @@ class VideoSubmitForm(FlaskForm):
     #
 
     last = SubmitField(
-        u"上一步", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Previous", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
     next = SubmitField(
-        u"下一步", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Next", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
 
 
 class TypeForm(FlaskForm):
@@ -134,30 +134,30 @@ class StatusForm(FlaskForm):
 
 
 class CreateForm(FlaskForm):
-    name = StringField(u'账号名称',
-                       validators=[DataRequired(message=u'名称需要.')],
-                       render_kw={"placeholder": "账号名称", 'class': 'form-control mt-1 border border-1 border-primary text-primar, rounded-pill', 'minlength': 5, 'maxlength': 150})
+    name = StringField(u'Account Name',
+                       validators=[DataRequired(message=u'Name Needed.')],
+                       render_kw={"placeholder": "Account Name", 'class': 'form-control mt-1 border border-1 border-primary text-primar, rounded-pill', 'minlength': 5, 'maxlength': 150})
 
-    email = EmailField(u'邮箱',
-                       validators=[DataRequired(message=u'邮箱地址需要'),
-                                   Email(message=u'格式错误')],
-                       render_kw={"placeholder": "邮箱地址", 'class': 'form-control mt-1 border border-1 border-primary text-primar, rounded-pill'})
+    email = EmailField(u'Email',
+                       validators=[DataRequired(message=u'Email Address Needed'),
+                                   Email(message=u'Wrong Type')],
+                       render_kw={"placeholder": "Email Address", 'class': 'form-control mt-1 border border-1 border-primary text-primar, rounded-pill'})
 
     password = PasswordField(
-        "密码",
+        "Password",
         validators=[
             DataRequired(),
             Length(min=6, message="Select a stronger password."),
         ], render_kw={'class': 'form-control mt-1 border border-warning text-warning bg-light rounded-pill'}
     )
 
-    type = SelectField(u'账号类型', coerce=int, render_kw={
+    type = SelectField(u'Account Type', coerce=int, render_kw={
         'class': 'form-control mt-1 form-select border border-3 border-danger text-danger rounded-pill'})
 
-    team = SelectField(u'所属战队', coerce=int, render_kw={
+    team = SelectField(u'Belong Team', coerce=int, render_kw={
         'class': 'form-control mt-1 form-select border border-3 border-danger text-danger rounded-pill'})
 
-    create = SubmitField(u"创建", render_kw={'class': 'btn btn-primary w-100'})
+    create = SubmitField(u"Create", render_kw={'class': 'btn btn-primary w-100'})
 
     def validate_on_submit(self):
         if not self.name.data.strip():
@@ -171,10 +171,10 @@ class CreateForm(FlaskForm):
 
 class AuditForm(FlaskForm):
     """?? Form."""
-    auditing = SelectField(u'待审核提交', coerce=int, render_kw={
+    auditing = SelectField(u'In Review', coerce=int, render_kw={
         'class': 'form-control mt-1 form-select border border-3 border-danger text-danger rounded-pill'})
     #
-    title = StringField('视频名称',
+    title = StringField('Video Name',
                         #   validators=[DataRequired(
                         #       message='视频名称必填.')],
                         render_kw={"placeholder": "视频名称", 'class': 'form-control mt-1 border border-1 border-primary text-primar, rounded-pill', 'minlength': 5, 'maxlength': 150, 'readonly': 'true'})
@@ -270,13 +270,13 @@ class AuditForm(FlaskForm):
 class SettingForm(FlaskForm):
     """User Account Form."""
     name = StringField(
-        u"账号名", validators=[DataRequired()], render_kw={'class': 'form-control mt-1 border border-danger text-danger bg-light rounded-pill'})
+        u"Account Name", validators=[DataRequired()], render_kw={'class': 'form-control mt-1 border border-danger text-danger bg-light rounded-pill'})
 
     team_name = StringField(
-        u"战队名", render_kw={'class': 'form-control mt-1 border border-danger text-danger rounded-pill', 'readonly': 'true'})
+        u"Team Name", render_kw={'class': 'form-control mt-1 border border-danger text-danger rounded-pill', 'readonly': 'true'})
 
     email = EmailField(
-        "邮箱",
+        "Email",
         validators=[
             Length(min=6),
             Email(message="Enter a valid email."),
@@ -284,14 +284,14 @@ class SettingForm(FlaskForm):
         ], render_kw={'class': 'form-control mt-1 border border-info text-info rounded-pill', 'readonly': 'true'}
     )
     password = PasswordField(
-        "密码",
+        "Password",
         validators=[
             DataRequired(),
             Length(min=6, message="Select a stronger password."),
         ], render_kw={'class': 'form-control mt-1 border border-warning text-warning bg-light rounded-pill'}
     )
     confirm = PasswordField(
-        "重复密码",
+        "Repeat Password",
         validators=[
             DataRequired(),
             EqualTo("password", message="Passwords must match."),
@@ -300,17 +300,17 @@ class SettingForm(FlaskForm):
 
     discord = StringField("Discord", render_kw={
                           'class': 'form-control mt-1 border border-warning text-warning bg-light rounded-pill'}, validators=None)
-    farm = StringField(u"所在农场", render_kw={
+    farm = StringField(u"Belong Farm", render_kw={
                        'class': 'form-control mt-1 border border-success text-success bg-light rounded-pill'}, validators=None)
     twitter = StringField(
-        u"推特账号", render_kw={'class': 'form-control mt-1 border border-primary text-primary bg-light  rounded-pill'}, validators=None)
-    gettr = StringField(u"盖特账号", render_kw={
+        u"Twitter Account", render_kw={'class': 'form-control mt-1 border border-primary text-primary bg-light  rounded-pill'}, validators=None)
+    gettr = StringField(u"Gettr Account", render_kw={
                         'class': 'form-control mt-1 border border-dark text-dark bg-light rounded-pill'}, validators=None)
     theme = SelectField(
-        u"主题", render_kw={'class': 'form-control mt-1 border border-warning text-warning bg-light form-select rounded-pill'}, coerce=int, validators=None)
+        u"Theme", render_kw={'class': 'form-control mt-1 border border-warning text-warning bg-light form-select rounded-pill'}, coerce=int, validators=None)
 
     submit = SubmitField(
-        u"修改", render_kw={'class': 'form-control mt-1 border border-none text-white bg-primary rounded-pill'})
+        u"Change", render_kw={'class': 'form-control mt-1 border border-none text-white bg-primary rounded-pill'})
 
 
 # @unique
@@ -657,29 +657,29 @@ class BackupForm(FlaskForm):
     '''
     '''
 
-    backup = StringField('数据库备份:', render_kw={
-        'class': 'form-control mt-1 border border-2 border-primary text-primary bg-light rounded-pill', 'placeholder': '名称..'})
+    backup = StringField('Database Backup:', render_kw={
+        'class': 'form-control mt-1 border border-2 border-primary text-primary bg-light rounded-pill', 'placeholder': 'Name..'})
 
     submit = SubmitField(
-        u"备份", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Backup", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
 
 
 class BWListForm(FlaskForm):
     '''
     '''
 
-    black = StringField('黑名单:', render_kw={
+    black = StringField('Black List:', render_kw={
         'class': 'form-control mt-1 border border-2 border-primary text-primary bg-light rounded-pill', 'placeholder': 'IP'})
-    black_note = StringField('备注:', render_kw={
+    black_note = StringField('Comment:', render_kw={
         'class': 'form-control mt-1 border border-2 border-primary text-primary bg-light rounded-pill'})
 
-    white = StringField('白名单:', render_kw={
+    white = StringField('White List:', render_kw={
         'class': 'form-control mt-1 border border-2 border-primary text-primary bg-light rounded-pill', 'placeholder': 'IP'})
-    white_note = StringField('备注:', render_kw={
+    white_note = StringField('Comment:', render_kw={
         'class': 'form-control mt-1 border border-2 border-primary text-primary bg-light rounded-pill'})
 
     submit_black = SubmitField(
-        u"保存", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Save", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
 
     submit_white = SubmitField(
-        u"保存", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Save", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})

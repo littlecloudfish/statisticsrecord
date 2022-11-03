@@ -104,14 +104,14 @@ def login():
             session["select_06"] = "😁😁😁😁😁😁"
 
             return redirect(next_page or url_for("dashboard_bp.dashboard"))
-        flash(category='error', message="用户名或密码错误！")
+        flash(category='error', message="UserNameOrPasswordIncorrect")
         return redirect(url_for("auth_bp.login"))
     return render_template(
         "login.jinja2",
         auth_back='index_bp.index',
         signup='auth_bp.signup',
         form=form,
-        title="登录",
+        title="Login",
         team="新中国联邦灭共技术支持小组",
         template="main-template auth-template",
     )

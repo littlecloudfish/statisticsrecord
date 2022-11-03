@@ -24,7 +24,7 @@ account_frame = {
     "themes": ["浅色", "深色"],
     "types": ["积分申报个人", "积分申报成员", "积分申报战队", "积分申报管理", "数据库管理员"],
     "status": ["正常", "挂起", "只读", "锁定"],
-    "account_tests": [{"name": "数据库测试", "team_name": None, "email": "data_admin@gmail.com",
+    "account_tests": [{"name": "Test Database", "team_name": None, "email": "data_admin@gmail.com",
                        "password": "111111"},
                       {"name": "管理测试", "team_name": None, "email": "admin@gmail.com",
                           "password": "111111"},
@@ -661,7 +661,7 @@ def create_app():
 
     #
     login_manager.needs_refresh_message = (
-        u"会话超时，请重新登录！")
+        u"Call Fail Login Again")
     login_manager.init_app(app)
     app.permanent_session_lifetime = timedelta(minutes=5)
 
