@@ -5,7 +5,7 @@ from .. import db
 
 
 class AccountOperation(db.Model):
-    """账号视频操作模型."""
+    """账号Video操作模型."""
     __tablename__ = "account_operation"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -20,8 +20,8 @@ class AccountOperation(db.Model):
     account_id = db.Column(db.Integer, db.ForeignKey(
         'account.id'), nullable=True)
 
-    # N004 每一个表项有对应的视频操作id
-    #  333-A, YES，视频操作
+    # N004 每一个表项有对应的Video操作id
+    #  333-A, YES，Video操作
     operation_id = db.Column(db.Integer, db.ForeignKey(
         'operation.id'), nullable=True)
 
@@ -29,5 +29,5 @@ class AccountOperation(db.Model):
     point = db.Column(db.Integer)
 
     def __repr__(self):
-        return "<账号视频操作模型 {}>".format('AccountOperation')
+        return "<账号Video操作模型 {}>".format('AccountOperation')
 

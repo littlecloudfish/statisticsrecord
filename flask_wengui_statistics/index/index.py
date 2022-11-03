@@ -64,23 +64,23 @@ def data_init():
     account_status = account_frame['status']
     account_tests = account_frame['account_tests']
 
-    # submit_types = ["视频", "音乐", "直播", "网站"]
+    # submit_types = ["Video", "Music", "Stream", "IT Development"]
     categories = [{'name': category['name'], 'value': category['value']}
                   for category in submit_frame['options']]
 
-    # video_types = ["微视频", "简化视频", "引述结构视频", "创作结构视频", "纪录片", "应急视频", "访谈视频"]
+    # video_types = ["Tiny Video", "Simplified Video", "State StructuredVideo", "Create StructedVideo", "Documentary", "EmergencyVideo", "Interview Video"]
     videoes = [{'name': video['name'], 'point': video['point']}
                for video in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options']]
 
-    # video_mic_ops: 微视频,
-    # 微视频<策划<微视频>, 文案编辑<微视频>, 文案审核<微视频>, 配音<微视频>, 翻译<微视频>, 翻译校对<微视频>>
+    # video_mic_ops: Tiny Video,
+    # Tiny Video<Design<Tiny Video>, 文案编辑<Tiny Video>, 文案审核<Tiny Video>, 配音<Tiny Video>, 翻译<Tiny Video>, 翻译校对<Tiny Video>>
 
-    # video_sim_ops: 简化视频,
-    # video_ref_ops: 引述结构视频,
-    # video_crt_ops: 创作结构视频,
-    # video_rcd_ops: 纪录片,
-    # video_ugt_ops: 应急视频,
-    # video_cht_ops: 访谈视频
+    # video_sim_ops: Simplified Video,
+    # video_ref_ops: State StructuredVideo,
+    # video_crt_ops: Create StructedVideo,
+    # video_rcd_ops: Documentary,
+    # video_ugt_ops: EmergencyVideo,
+    # video_cht_ops: Interview Video
     #
     # video_ops = [type['name']
     #              for type in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .MIC_VIDEO]['options']]+([type['name'] for type in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .SIM_VIDEO]['options']])+([type['name'] for type in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .REF_VIDEO]['options']])+([type['name'] for type in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .CRT_VIDEO]['options']])+([type['name'] for type in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .RCD_VIDEO]['options']])+([type['name'] for type in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .UGT_VIDEO]['options']])+([type['name'] for type in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .CHT_VIDEO]['options']])
@@ -180,7 +180,7 @@ def account_status_init(status):
 
 
 def account_type_init(types):
-    '''账号类型初始化'''
+    '''账号Type初始化'''
     results = AccountType.query.all()
     if not results:
         for type in types:
@@ -214,15 +214,15 @@ def account_init(account_tests):
                 member = None
             else:
                 account_type = AccountType.query.filter_by(
-                    name="数据库管理员").first()
+                    name="Number据库管理员").first()
                 member = None
             new_account = Account(name=account['name'],
                                   team_name=account['team_name'],
                                   email=account['email'],
                                   theme=Theme.query.filter_by(
-                                      name='浅色').first(),
+                                      name='Light Color').first(),
                                   account_status=AccountStatus.query.filter_by(
-                                      name='正常').first(),
+                                      name='Normal').first(),
                                   member=member,
                                   account_type=account_type)
 
@@ -252,7 +252,7 @@ def account_init(account_tests):
 
 
 def category_init(categories):
-    '''作品类别初始化'''
+    '''Work Type初始化'''
     results = Category.query.all()
     if not results:
         for category in categories:
@@ -273,7 +273,7 @@ def submit_status_init(status):
 
 
 def video_init(videoes):
-    '''视频类型初始化'''
+    '''VideoType初始化'''
     results = Video.query.all()
     if not results:
         from .. import submit_frame
@@ -288,7 +288,7 @@ def video_init(videoes):
 
 
 def music_init(musics):
-    '''音乐类型初始化'''
+    '''MusicType初始化'''
     results = Music.query.all()
     if not results:
         from .. import submit_frame
@@ -303,7 +303,7 @@ def music_init(musics):
 
 
 def stream_init(streams):
-    '''直播类型初始化'''
+    '''StreamType初始化'''
     results = Stream.query.all()
     if not results:
         from .. import submit_frame
@@ -318,7 +318,7 @@ def stream_init(streams):
 
 
 def website_init(websites):
-    '''网站类型初始化'''
+    '''IT DevelopmentType初始化'''
     results = Website.query.all()
     if not results:
         from .. import submit_frame
@@ -333,7 +333,7 @@ def website_init(websites):
 
 
 def video_ops_init():
-    '''视频操作初始化'''
+    '''Video操作初始化'''
     results = Operation.query.all()
     if not results:
         from .. import submit_frame
@@ -341,7 +341,7 @@ def video_ops_init():
         from ..dashboard.model_video import E_VIDEO_TYPE
 
         video = Video.query.filter(
-            Video.name.like('微视频')).first()
+            Video.name.like('Tiny Video')).first()
         video_ops = [{'name': op['name'], 'weight': op['weight']}
                      for op in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .MIC_VIDEO]['options']]
         for op in video_ops:
@@ -351,7 +351,7 @@ def video_ops_init():
             # db.session.commit()
         #
         video = Video.query.filter(
-            Video.name.like('简化视频')).first()
+            Video.name.like('Simplified Video')).first()
         video_ops = [{'name': op['name'], 'weight': op['weight']}
                      for op in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .SIM_VIDEO]['options']]
         for op in video_ops:
@@ -361,7 +361,7 @@ def video_ops_init():
             # db.session.commit()
         #
         video = Video.query.filter(
-            Video.name.like('引述结构视频')).first()
+            Video.name.like('State StructuredVideo')).first()
         video_ops = [{'name': op['name'], 'weight': op['weight']}
                      for op in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .REF_VIDEO]['options']]
         for op in video_ops:
@@ -371,7 +371,7 @@ def video_ops_init():
             # db.session.commit()
         #
         video = Video.query.filter(
-            Video.name.like('创作结构视频')).first()
+            Video.name.like('Create StructedVideo')).first()
         video_ops = [{'name': op['name'], 'weight': op['weight']}
                      for op in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .CRT_VIDEO]['options']]
         for op in video_ops:
@@ -381,7 +381,7 @@ def video_ops_init():
             # db.session.commit()
         #
         video = Video.query.filter(
-            Video.name.like('纪录片')).first()
+            Video.name.like('Documentary')).first()
         video_ops = [{'name': op['name'], 'weight': op['weight']}
                      for op in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .RCD_VIDEO]['options']]
         for op in video_ops:
@@ -391,7 +391,7 @@ def video_ops_init():
             # db.session.commit()
         #
         video = Video.query.filter(
-            Video.name.like('应急视频')).first()
+            Video.name.like('EmergencyVideo')).first()
         video_ops = [{'name': op['name'], 'weight': op['weight']}
                      for op in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .UGT_VIDEO]['options']]
         for op in video_ops:
@@ -401,7 +401,7 @@ def video_ops_init():
             # db.session.commit()
         #
         video = Video.query.filter(
-            Video.name.like('访谈视频')).first()
+            Video.name.like('Interview Video')).first()
         video_ops = [{'name': op['name'], 'weight': op['weight']}
                      for op in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options'][E_VIDEO_TYPE .CHT_VIDEO]['options']]
         for op in video_ops:
@@ -417,7 +417,7 @@ def submit_init(submit_tests):
         # for account in accounts:
         # categories = Category.query.all()
         category = Category.query.filter(
-            Category.name.like('视频')).first()
+            Category.name.like('Video')).first()
         submit_status = VideoSubmitStatus.query.filter(
             VideoSubmitStatus.name.like('%待审核%')).first()
         # search = "%{}%".format('成员')

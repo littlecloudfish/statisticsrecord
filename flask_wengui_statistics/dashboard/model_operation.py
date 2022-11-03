@@ -5,7 +5,7 @@ from .. import db
 
 
 class Operation(db.Model):
-    """视频操作模型."""
+    """Video操作模型."""
     __tablename__ = "operation"
 
     #    222
@@ -20,7 +20,7 @@ class Operation(db.Model):
         'video.id'), nullable=False)
 
     # N004 每一个？？？
-    #  333-B, YES，视频操作
+    #  333-B, YES，Video操作
     operations = db.relationship(
         'AccountOperation', backref='operation', lazy=True)
 
@@ -32,4 +32,4 @@ class Operation(db.Model):
                 'weight': self.weight}
 
     def __repr__(self):
-        return "<视频操作 {}>".format(self.name)
+        return "<Video操作 {}>".format(self.name)

@@ -62,7 +62,7 @@ def email_notice(time, ip, ip_url, address, map, browser):
     import smtplib
     import ssl
 
-    subject = "全栈网站访问！"
+    subject = "全栈IT Development访问！"
 
     html_1 = """<html>
     <head>

@@ -42,7 +42,7 @@ class VideoSubmit(db.Model):
     team_id = db.Column(db.Integer, db.ForeignKey(
         'account.id'), nullable=False)
 
-    # N002- 每一个提交产生多个【账号-视频操作】表项
+    # N002- 每一个提交产生多个【账号-Video操作】表项
     #  111-B, YES
     # ************************ 多对多 AccountOperation 表的submit_id  ************************** #
     account_operations = db.relationship(

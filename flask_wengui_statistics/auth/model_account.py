@@ -58,7 +58,7 @@ class Account(UserMixin, db.Model):
         'Account', backref=backref('member', remote_side='Account.id'))
     ###################################################################
 
-    # N003- 每一个账号有多个【视频操作】表项
+    # N003- 每一个账号有多个【Video操作】表项
     # 222-B, YES
     operations = db.relationship(
         'AccountOperation', backref='account', lazy=True)

@@ -7,7 +7,7 @@
 </div>
 
 <div class="d-flex justify-content-end">
-  <h5 style="letter-spacing: 2px;">战队数：<b>{{ utils['get_count'](teams) }}</b></h5>
+  <h5 style="letter-spacing: 2px;">战队Number：<b>{{ utils['get_count'](teams) }}</b></h5>
 </div>
 <div class="mt-2 table-responsive-sm">
   {% for team in teams %}
@@ -22,13 +22,13 @@
   <table class="table table-striped mb-5 mt-2 border border-primary border-1">
     <thead>
       <tr>
-        <th>作品标题</th>
-        <th>作品类别</th>
-        <th>全球代码</th>
-        <th>战队代码</th>
-        <th>链接</th>
-        <th>网盘链接</th>
-        <th>策划</th>
+        <th>Work Title</th>
+        <th>Work Type</th>
+        <th>Global Code</th>
+        <th>Team Code</th>
+        <th>Link</th>
+        <th>DriveLink</th>
+        <th>Design</th>
         <th>文案编辑</th>
         <th>文案审核</th>
         <th>配音</th>
@@ -37,7 +37,7 @@
         <th>注释</th>
         <th>提交状态</th>
         <th>提交日期</th>
-        {# <th>积分数</th> #}
+        {# <th>积分Number</th> #}
       </tr>
     </thead>
     <tbody>
@@ -55,8 +55,8 @@
         <td class="text-center" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ submit.disk_link }}"><a
             href="{{ submit.disk_link }}" target="_blank">{{ '<i class="bx bxs-disc" style="color:red"></i>' if
             submit.disk_link != None }}</a></td>
-        {# 策划, 文案编辑, 文案审核, 配音, 翻译, 翻译校对 #}
-        <td>{{ utils['account_operation_points'](submit, '策划<') }}</td>
+        {# Design, 文案编辑, 文案审核, 配音, 翻译, 翻译校对 #}
+        <td>{{ utils['account_operation_points'](submit, 'Design<') }}</td>
         <td>{{ utils['account_operation_points'](submit, '编辑<') }}</td>
         <td>{{ utils['account_operation_points'](submit, '审核<') }}</td>
         <td>{{ utils['account_operation_points'](submit, '配音<') }}</td>

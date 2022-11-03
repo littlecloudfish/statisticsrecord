@@ -47,7 +47,7 @@ class E_ACCOUNT_TYPE(IntEnum):
     ADMIN = 3
     DATA_ADMIN = 4
 
-# ["微视频", "简化视频", "引述结构视频", "创作结构视频", "纪录片", "应急视频", "访谈视频"]
+# ["Tiny Video", "Simplified Video", "State StructuredVideo", "Create StructedVideo", "Documentary", "EmergencyVideo", "Interview Video"]
 
 
 # Blueprint Configuration
@@ -69,12 +69,12 @@ def dashboard_init():
         myRelay.toggle()
         myLED_ARRAY.toggle()
 
-    # theme = "dark" if current_user.theme.name == "深色" else "white?"
+    # theme = "dark" if current_user.theme.name == "Deep Color" else "white?"
     # back = "dashboard_bp.dashboard"
-    # g_variables["theme"] = "dark" if current_user.theme.name == "深色" else "white?"
+    # g_variables["theme"] = "dark" if current_user.theme.name == "Deep Color" else "white?"
 
     # global submit_idx
-    # g_vars_list[submit_idx]["theme"] = "dark" if current_user.theme.name == "深色" else "white?"
+    # g_vars_list[submit_idx]["theme"] = "dark" if current_user.theme.name == "Deep Color" else "white?"
     if current_user.account_type.name == "积分申报个人":
         _g_account_type = E_ACCOUNT_TYPE.PERSONAL
         menu = [{"icon": "bx bx-cloud-upload icon", "isize": '28px',
@@ -131,7 +131,7 @@ def dashboard_init():
         menu = [{"icon": "bx bxs-user-rectangle icon", "isize": '28px',
                 "url": "dashboard_bp.dashboard", "text": "Manager Dashboard", "active": True},
                 # {"icon": "bx bxs-group icon", "isize": '28px',
-                #  "url": "dashboard_bp.account", "text": "账号管理(类型)", "active": True},
+                #  "url": "dashboard_bp.account", "text": "账号管理(Type)", "active": True},
                 # {"icon": "bx bxs-lock-open-alt icon", "isize": '28px',
                 #  "url": "dashboard_bp.status", "text": "账号管理(状态)", "active": True},
                 {"icon": "bx bxs-folder-plus icon", "isize": '28px',
@@ -152,7 +152,7 @@ def dashboard_init():
         key_vairbles()
 
     _vars = g_vars_list[current_user.id-1]
-    _vars["theme"] = "dark" if current_user.theme.name == "深色" else "white?"
+    _vars["theme"] = "dark" if current_user.theme.name == "Deep Color" else "white?"
 
     # print('🤣', current_user.id)
     return [menu, _vars]
@@ -213,9 +213,9 @@ def create():
                     # team_name=account['team_name'],
                     email=email,
                     theme=Theme.query.filter_by(
-                        name='浅色').first(),
+                        name='Light Color').first(),
                     account_status=AccountStatus.query.filter_by(
-                        name='正常').first(),
+                        name='Normal').first(),
                     # member=member,
                     account_type_id=type_id,
                     team_id=team_id,
@@ -259,7 +259,7 @@ def record():
     # records = db.session.query(IP.ip).distinct().all()
 
     # from sqlalchemy import func, desc
-    # # 3, 统计每个IP地址访问的次数，降序结果， func.count, group_by，desc
+    # # 3, 统计每个IP地址访问的次Number，降序结果， func.count, group_by，desc
     # records = records = IP.query.with_entities(
     #     IP.page,
     #     IP.ip,
@@ -281,7 +281,7 @@ def record():
     # ('50.72.43.125', 'Winnipeg', 2)
     # ('70.80.220.62', 'Montreal', 1)
 
-    # 4, 统计每个IP地址访问的次数和最近一次访问的时间， func.count, group_by，
+    # 4, 统计每个IP地址访问的次Number和最近一次访问的时间， func.count, group_by，
     records = IP.query.with_entities(
         IP.page,
         IP.ip,
@@ -302,7 +302,7 @@ def record():
     # from sqlalchemy.orm import defer
     # from sqlalchemy.orm import undefer
 
-    # # 5, 统计每个IP地址访问的次数和最近一次访问的时间（undefer('*')），， func.count, group_by，undefer
+    # # 5, 统计每个IP地址访问的次Number和最近一次访问的时间（undefer('*')），， func.count, group_by，undefer
     # # records = IP.query.options(undefer('*'))
     # records = IP.query.options(undefer('*'))\
     #     .with_entities(func.max(IP.time).label('latest'),
@@ -396,7 +396,7 @@ def dashboard():
     #     #     _vars[i] = g_vars_list[i]
     #     _vars = g_vars_list[current_user.id-1]
 
-    # _vars["theme"] = "dark" if current_user.theme.name == "深色" else "white?"
+    # _vars["theme"] = "dark" if current_user.theme.name == "Deep Color" else "white?"
 
     [menu, _vars] = dashboard_init()
 
@@ -428,7 +428,7 @@ def status():
     form = StatusForm()
     # # #
     accounts_normal = Account.query.join(AccountStatus).filter(
-        AccountStatus.name.like('正常')).join(AccountType).filter(
+        AccountStatus.name.like('Normal')).join(AccountType).filter(
         AccountType.name.like('积分申报成员') | AccountType.name.like('积分申报战队')).all()
 
     accounts_pending = Account.query.join(AccountStatus).filter(
@@ -444,7 +444,7 @@ def status():
         AccountType.name.like('积分申报成员') | AccountType.name.like('积分申报战队')).all()
     #
     status_normal = AccountStatus.query.filter(
-        AccountStatus.name.notlike('正常')).all()
+        AccountStatus.name.notlike('Normal')).all()
     status_pending = AccountStatus.query.filter(
         AccountStatus.name.notlike('挂起')).all()
     status_read = AccountStatus.query.filter(
@@ -452,7 +452,7 @@ def status():
     status_locked = AccountStatus.query.filter(
         AccountStatus.name.notlike('锁定')).all()
 
-    if current_user.account_type.name == "数据库管理员" or current_user.account_type.name == "积分申报管理":
+    if current_user.account_type.name == "Number据库管理员" or current_user.account_type.name == "积分申报管理":
         #[(1, 'C++'), (2, 'Python'), (3, 'Plain Text')]
         form.normal.choices = [(normal.id, normal.name + ' <' + normal.email + '>')
                                for normal in accounts_normal]
@@ -580,7 +580,7 @@ def audit():
 
         from flask_wengui_statistics import account_points
 
-        form.plan.data, form.plan_point.data = account_points(submit, '策划<')
+        form.plan.data, form.plan_point.data = account_points(submit, 'Design<')
         form.edit.data, form.edit_point.data = account_points(submit, '编辑<')
         form.audit.data, form.audit_point.data = account_points(submit, '审核<')
         form.dubb.data, form.dubb_point.data = account_points(submit, '配音<')
@@ -611,7 +611,7 @@ def audit():
         return redirect(url_for("dashboard_bp.audit"))
     return render_template(
         "audit.jinja2",
-        title="账号类型修改 | 后台管理",
+        title="账号Type修改 | 后台管理",
         sub_title="作品提交审核",
 
         menu=menu,
@@ -679,7 +679,7 @@ def account():
     #     '积分申报战队') | AccountType.name.like('积分申报成员')).all()
     form = TypeForm()
 
-    if current_user.account_type.name == "数据库管理员":
+    if current_user.account_type.name == "Number据库管理员":
         personal_type = AccountType.query.filter(
             AccountType.name.like('积分申报战队') | AccountType.name.like('积分申报管理')).all()
         team_type = AccountType.query.filter(
@@ -760,8 +760,8 @@ def account():
         return redirect(url_for("dashboard_bp.account"))
     return render_template(
         "account.jinja2",
-        title="账号类型修改 | 后台管理",
-        sub_title="账号类型变更",
+        title="账号Type修改 | 后台管理",
+        sub_title="账号Type变更",
 
         menu=menu,
         _vars=_vars,
@@ -884,7 +884,7 @@ def submit_v1v2():
         else:
             if is_submit == False:
                 # if current_user.team_id != None:
-                #     flash(category="error", message="战队成员账号不能独立提交!")
+                #     flash(category="error", message="Team Member账号不能独立提交!")
                 #     return redirect(url_for("dashboard_bp.submit_v1v2"))
 
                 if steps == 0:
@@ -908,8 +908,8 @@ def submit_v1v2():
                     flash(category='error', message="请选择负责本任务的各模块战友！")
                     return redirect(url_for("dashboard_bp.submit_v1v2"))
 
-                category_id = _submit_v1v2[0]['value']  # 视频
-                sub_category_id = _submit_v1v2[1]['value']  # 简化视频
+                category_id = _submit_v1v2[0]['value']  # Video
+                sub_category_id = _submit_v1v2[1]['value']  # Simplified Video
 
                 product_title = form.title.data
                 # team_code = form.code.data
@@ -969,7 +969,7 @@ def submit_v1v2():
                 # *******************************
                 if plan_id != 0:
                     operation = Operation.query.filter(
-                        Operation.name.like('%策划<{}>%'.format(video_type))).first()
+                        Operation.name.like('%Design<{}>%'.format(video_type))).first()
                     point = (base_point * plan_weight) // 100
 
                     new_plan = AccountOperation(
@@ -1195,8 +1195,8 @@ def submit_v3():
 
                 team_id = _submit_v3[0]['value']  # 战队n
 
-                category_id = _submit_v3[1]['value']  # 视频
-                sub_category_id = _submit_v3[2]['value']  # 简化视频
+                category_id = _submit_v3[1]['value']  # Video
+                sub_category_id = _submit_v3[2]['value']  # Simplified Video
 
                 product_title = form.title.data
                 # team_code = form.code.data
@@ -1258,7 +1258,7 @@ def submit_v3():
                 # *******************************
                 if plan_id != 0:
                     operation = Operation.query.filter(
-                        Operation.name.like('%策划<{}>%'.format(video_type_name))).first()
+                        Operation.name.like('%Design<{}>%'.format(video_type_name))).first()
                     point = (base_point * plan_weight) // 100
 
                     new_plan = AccountOperation(
@@ -1421,7 +1421,7 @@ def member():
     return render_template(
         "member.jinja2",
         title="我的成员 | 后台管理",
-        sub_title="战队成员",
+        sub_title="Team Member",
         #
         menu=menu,
         _vars=_vars,
@@ -1494,19 +1494,19 @@ def weight():
 
     [menu, _vars] = dashboard_init()
 
-    # video_types = ["微视频", "简化视频", "引述结构视频", "创作结构视频", "纪录片", "应急视频", "访谈视频"]
-    data_mic = Operation.query.join(Video).filter(Video.name.like('微视频')).all()
+    # video_types = ["Tiny Video", "Simplified Video", "State StructuredVideo", "Create StructedVideo", "Documentary", "EmergencyVideo", "Interview Video"]
+    data_mic = Operation.query.join(Video).filter(Video.name.like('Tiny Video')).all()
     data_sim = Operation.query.join(Video).filter(
-        Video.name.like('简化视频')).all()
+        Video.name.like('Simplified Video')).all()
     data_ref = Operation.query.join(Video).filter(
-        Video.name.like('引述结构视频')).all()
+        Video.name.like('State StructuredVideo')).all()
     data_crt = Operation.query.join(Video).filter(
-        Video.name.like('创作结构视频')).all()
-    data_rcd = Operation.query.join(Video).filter(Video.name.like('纪录片')).all()
+        Video.name.like('Create StructedVideo')).all()
+    data_rcd = Operation.query.join(Video).filter(Video.name.like('Documentary')).all()
     data_ugt = Operation.query.join(Video).filter(
-        Video.name.like('应急视频')).all()
+        Video.name.like('EmergencyVideo')).all()
     data_cht = Operation.query.join(Video).filter(
-        Video.name.like('访谈视频')).all()
+        Video.name.like('Interview Video')).all()
 
     # form_mic = WeightForm(E_VIDEO_TYPE .MIC_VIDEO)
     form = WeightForm()
@@ -1570,10 +1570,10 @@ def weight():
                 trans = form.mic_trans.raw_data[0]
                 check = form.mic_check.raw_data[0]
 
-                video = Video.query.filter(Video.name.like('%微视频%')).first()
+                video = Video.query.filter(Video.name.like('%Tiny Video%')).first()
 
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%策划%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
+                    '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
                     '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
@@ -1596,10 +1596,10 @@ def weight():
                 trans = form.sim_trans.raw_data[0]
                 check = form.sim_check.raw_data[0]
 
-                video = Video.query.filter(Video.name.like('%简化视频%')).first()
+                video = Video.query.filter(Video.name.like('%Simplified Video%')).first()
 
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%策划%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
+                    '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
                     '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
@@ -1622,10 +1622,10 @@ def weight():
                 trans = form.ref_trans.raw_data[0]
                 check = form.ref_check.raw_data[0]
 
-                video = Video.query.filter(Video.name.like('%引述结构视频%')).first()
+                video = Video.query.filter(Video.name.like('%State StructuredVideo%')).first()
 
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%策划%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
+                    '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
                     '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
@@ -1648,10 +1648,10 @@ def weight():
                 trans = form.crt_trans.raw_data[0]
                 check = form.crt_check.raw_data[0]
 
-                video = Video.query.filter(Video.name.like('%创作结构视频%')).first()
+                video = Video.query.filter(Video.name.like('%Create StructedVideo%')).first()
 
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%策划%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
+                    '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
                     '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
@@ -1674,10 +1674,10 @@ def weight():
                 trans = form.rcd_trans.raw_data[0]
                 check = form.rcd_check.raw_data[0]
 
-                video = Video.query.filter(Video.name.like('%纪录片%')).first()
+                video = Video.query.filter(Video.name.like('%Documentary%')).first()
 
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%策划%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
+                    '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
                     '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
@@ -1700,10 +1700,10 @@ def weight():
                 trans = form.ugt_trans.raw_data[0]
                 check = form.ugt_check.raw_data[0]
 
-                video = Video.query.filter(Video.name.like('%应急视频%')).first()
+                video = Video.query.filter(Video.name.like('%EmergencyVideo%')).first()
 
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%策划%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
+                    '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
                     '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
@@ -1726,10 +1726,10 @@ def weight():
                 trans = form.cht_trans.raw_data[0]
                 check = form.cht_check.raw_data[0]
 
-                video = Video.query.filter(Video.name.like('%访谈%')).first()
+                video = Video.query.filter(Video.name.like('%Interview %')).first()
 
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%策划%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
+                    '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
                     '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
@@ -1781,40 +1781,40 @@ def pparameter():
         if form.submit_mic.data:
             mic_video = form.mic_video.raw_data[0]
             db.session.query(Video).filter(
-                Video.name.like('%微视频%')).update({"point": mic_video}, synchronize_session=False)
+                Video.name.like('%Tiny Video%')).update({"point": mic_video}, synchronize_session=False)
         elif form.submit_sim.data:
             sim_video = form.sim_video.raw_data[0]
             db.session.query(Video).filter(
-                Video.name.like('%简化视频%')).update({"point": sim_video}, synchronize_session=False)
+                Video.name.like('%Simplified Video%')).update({"point": sim_video}, synchronize_session=False)
         elif form.submit_ref.data:
             ref_video = form.ref_video.raw_data[0]
             db.session.query(Video).filter(
-                Video.name.like('%引述结构视频%')).update({"point": ref_video}, synchronize_session=False)
+                Video.name.like('%State StructuredVideo%')).update({"point": ref_video}, synchronize_session=False)
         elif form.submit_crt.data:
             crt_video = form.crt_video.raw_data[0]
             db.session.query(Video).filter(
-                Video.name.like('%创作结构视频%')).update({"point": crt_video}, synchronize_session=False)
+                Video.name.like('%Create StructedVideo%')).update({"point": crt_video}, synchronize_session=False)
         elif form.submit_rcd.data:
             rcd_video = form.rcd_video.raw_data[0]
             db.session.query(Video).filter(
-                Video.name.like('%纪录片%')).update({"point": rcd_video}, synchronize_session=False)
+                Video.name.like('%Documentary%')).update({"point": rcd_video}, synchronize_session=False)
         elif form.submit_ugt.data:
             ugt_video = form.ugt_video.raw_data[0]
             db.session.query(Video).filter(
-                Video.name.like('%应急视频%')).update({"point": ugt_video}, synchronize_session=False)
+                Video.name.like('%EmergencyVideo%')).update({"point": ugt_video}, synchronize_session=False)
         elif form.submit_cht.data:
             cht_video = form.cht_video.raw_data[0]
             db.session.query(Video).filter(
-                Video.name.like('%访谈视频%')).update({"point": cht_video}, synchronize_session=False)
+                Video.name.like('%Interview Video%')).update({"point": cht_video}, synchronize_session=False)
 
         db.session.commit()
 
-        flash(category='success', message="积分参数设置成功！")
+        flash(category='success', message="积分参Number设置成功！")
         return redirect(url_for("dashboard_bp.pparameter"))
     return render_template(
         "pparameter.jinja2",
-        title="积分参数设置 | 后台管理",
-        sub_title="积分参数设置",
+        title="积分参Number设置 | 后台管理",
+        sub_title="积分参Number设置",
 
         #
         menu=menu,
@@ -1845,7 +1845,7 @@ def setting():
     # form = SettingForm()  # theme=2
     # form.theme(choices=[(theme.id, theme.name) for theme in Theme.query.all()])
 
-    # _vars["theme"] = "dark" if account.theme.name == "深色" else "white?"
+    # _vars["theme"] = "dark" if account.theme.name == "Deep Color" else "white?"
 
     # form.name.data = account.name
     # form.email.data = account.email

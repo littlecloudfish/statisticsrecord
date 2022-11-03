@@ -39,8 +39,8 @@
   </form>
 </div>
 
-{# 数据库管理员账号 #}
-{% if current_user.account_type.name == "数据库管理员" %}
+{# Number据库管理员账号 #}
+{% if current_user.account_type.name == "Number据库管理员" %}
 <div class="form-out">
   <form action="{{ request.path }}" method="post">
     {{ form.csrf_token }}

@@ -21,17 +21,17 @@ class VideoSubmitForm(FlaskForm):
     option = RadioField(u"", coerce=int, validate_choice=False, render_kw={
         'class': 'form-check-input'}, default=1)
     # else:
-    title = StringField('视频名称',
+    title = StringField('Video名称',
                         #   validators=[DataRequired(
-                        #       message='视频名称必填.')],
-                        render_kw={"placeholder": "视频名称", 'class': 'form-control mt-1 border border-3 border-info text-primary bg-light', 'minlength': 1, 'maxlength': 150})
+                        #       message='Video名称必填.')],
+                        render_kw={"placeholder": "Video名称", 'class': 'form-control mt-1 border border-3 border-info text-primary bg-light', 'minlength': 1, 'maxlength': 150})
     # team_code = StringField(
     #     "作品编号",
     #     # validators=[DataRequired("作品编号必填.")],
     #     render_kw={'class': 'form-control rounded-pill', 'readonly': 'true'}
     # )
 
-    length = TimeField('视频时长',
+    length = TimeField('Video时长',
                        format='%H:%M:%S',
                        #    validators=[DataRequired()],
                        render_kw={'placeholder': '起始时间', 'step': '1',
@@ -47,21 +47,21 @@ class VideoSubmitForm(FlaskForm):
         # validators=[DataRequired("协调必填.")]
     )
     guide = StringField(
-        "视频导语",
-        # validators=[DataRequired("视频导语必填.")]
+        "Video导语",
+        # validators=[DataRequired("Video导语必填.")]
     )
-    link = URLField('链接',
+    link = URLField('Link',
                     # validators=[DataRequired()],
-                    render_kw={'placeholder': '作品链接', 'class': 'form-control mt-1 bg-light rounded-pill'})
-    disk_link = URLField('网盘链接',
+                    render_kw={'placeholder': '作品Link', 'class': 'form-control mt-1 bg-light rounded-pill'})
+    disk_link = URLField('DriveLink',
                          # validators=[DataRequired()],
-                         render_kw={'placeholder': '网盘链接', 'class': 'form-control mt-1 bg-light rounded-pill'})
+                         render_kw={'placeholder': 'DriveLink', 'class': 'form-control mt-1 bg-light rounded-pill'})
     # 文案编辑
     # 文案审核
     # 配音
     # 翻译
     # 翻译校队
-    plan = SelectField('策划(没有则留空)', default=0, coerce=int, render_kw={
+    plan = SelectField('Design(没有则留空)', default=0, coerce=int, render_kw={
                        'class': 'form-control mt-1 form-select border border-3 border-danger text-danger bg-light rounded-pill'})
     edit = SelectField('编辑(没有则留空)', default=0, coerce=int, render_kw={
                        'class': 'form-control mt-1 form-select border border-3 border-info text-info bg-light rounded-pill'})
@@ -76,7 +76,7 @@ class VideoSubmitForm(FlaskForm):
     #
     comment = TextAreaField('备注',
                             #   validators=[DataRequired(
-                            #       message='视频名称必填.')],
+                            #       message='Video名称必填.')],
                             render_kw={"placeholder": "提交说明, 备注等", 'class': 'form-control mt-1 border border-3 border-info text-primary bg-light', 'minlength': 0, 'maxlength': 350})
     #
 
@@ -96,21 +96,21 @@ class TypeForm(FlaskForm):
     admin = SelectField(u'管理员账号', render_kw={
         'class': 'form-control mt-1 form-select'})
     personal_type = SelectField(
-        u'账号类型', render_kw={'class': 'form-control mt-1 form-select'})
+        u'账号Type', render_kw={'class': 'form-control mt-1 form-select'})
     team_type = SelectField(
-        u'账号类型', render_kw={'class': 'form-control mt-1 form-select'})
+        u'账号Type', render_kw={'class': 'form-control mt-1 form-select'})
     admin_type = SelectField(
-        u'账号类型', render_kw={'class': 'form-control mt-1 form-select'})
+        u'账号Type', render_kw={'class': 'form-control mt-1 form-select'})
     # account_type = SelectField(
-    #     u'账号类型', render_kw={'class': 'form-control form-select'})
+    #     u'账号Type', render_kw={'class': 'form-control form-select'})
     submit = SubmitField(u"修改为", render_kw={'class': 'btn btn-primary'})
 
 
 class StatusForm(FlaskForm):
     """?? Form."""
 
-    # ["正常", "挂起", "只读", "锁定"]
-    normal = SelectField(u'账号(正常)', render_kw={
+    # ["Normal", "挂起", "只读", "锁定"]
+    normal = SelectField(u'账号(Normal)', render_kw={
         'class': 'form-control mt-1 form-select'})
     pending = SelectField(u'账号(挂起)', render_kw={
         'class': 'form-control mt-1 form-select'})
@@ -176,8 +176,8 @@ class AuditForm(FlaskForm):
     #
     title = StringField('Video Name',
                         #   validators=[DataRequired(
-                        #       message='视频名称必填.')],
-                        render_kw={"placeholder": "视频名称", 'class': 'form-control mt-1 border border-1 border-primary text-primar, rounded-pill', 'minlength': 5, 'maxlength': 150, 'readonly': 'true'})
+                        #       message='Video名称必填.')],
+                        render_kw={"placeholder": "Video名称", 'class': 'form-control mt-1 border border-1 border-primary text-primar, rounded-pill', 'minlength': 5, 'maxlength': 150, 'readonly': 'true'})
     global_code = StringField(
         "作品编号(全球)",
         # validators=[DataRequired("作品编号必填.")],
@@ -192,7 +192,7 @@ class AuditForm(FlaskForm):
             'class': 'form-control mt-1 border border-1 border-success text-success rounded-pill', 'readonly': 'true'}
     )
 
-    # length = TimeField('视频时长',
+    # length = TimeField('Video时长',
     #                    format='%H:%M:%S',
     #                    #    validators=[DataRequired()],
     #                    render_kw={'placeholder': '起始时间', 'step': '1',
@@ -204,7 +204,7 @@ class AuditForm(FlaskForm):
     #                    default=time()
     #                    )
     length = StringField(
-        "视频时长", render_kw={'class': 'form-control mt-1 border border-1 border-info text-info rounded-pill', 'readonly': 'true'}
+        "Video时长", render_kw={'class': 'form-control mt-1 border border-1 border-info text-info rounded-pill', 'readonly': 'true'}
         # validators=[DataRequired("协调必填.")]
     )
 
@@ -213,17 +213,17 @@ class AuditForm(FlaskForm):
         # validators=[DataRequired("协调必填.")]
     )
     guide = StringField(
-        "视频导语", render_kw={'class': 'form-control mt-1 border border-1 border-danger, text-danger, rounded-pill'}
-        # validators=[DataRequired("视频导语必填.")]
+        "Video导语", render_kw={'class': 'form-control mt-1 border border-1 border-danger, text-danger, rounded-pill'}
+        # validators=[DataRequired("Video导语必填.")]
     )
-    link = URLField('链接',
+    link = URLField('Link',
                     # validators=[DataRequired()],
-                    render_kw={'placeholder': '作品链接', 'class': 'form-control mt-1 border border-1 border-secondary text-secondary rounded-pill', 'readonly': 'true'})
-    disk_link = URLField('网盘链接',
+                    render_kw={'placeholder': '作品Link', 'class': 'form-control mt-1 border border-1 border-secondary text-secondary rounded-pill', 'readonly': 'true'})
+    disk_link = URLField('DriveLink',
                          # validators=[DataRequired()],
-                         render_kw={'placeholder': '网盘链接', 'class': 'form-control mt-1 border border-1 border-dark  rounded-pill', 'readonly': 'true'})
+                         render_kw={'placeholder': 'DriveLink', 'class': 'form-control mt-1 border border-1 border-dark  rounded-pill', 'readonly': 'true'})
     # primary ， success ， info ， warning ， danger ， secondary ， dark ， light ，
-    plan = StringField('策划', render_kw={
+    plan = StringField('Design', render_kw={
                        'class': 'form-control mt-1 border border-1 border-primary text-primary rounded-pill', 'readonly': 'true'})
     plan_point = StringField('', render_kw={
         'class': 'form-control mt-1 border border-1 border-primary text-primary rounded-pill', 'readonly': 'true'})
@@ -255,11 +255,11 @@ class AuditForm(FlaskForm):
     #
     comment = TextAreaField('备注',
                             #   validators=[DataRequired(
-                            #       message='视频名称必填.')],
+                            #       message='Video名称必填.')],
                             render_kw={"placeholder": "提交说明, 备注等", 'class': 'form-control mt-1 border border-1 border-danger text-danger', 'minlength': 0, 'maxlength': 350, 'readonly': 'true'})
     comment_audit = TextAreaField('审核反馈',
                                   #   validators=[DataRequired(
-                                  #       message='视频名称必填.')],
+                                  #       message='Video名称必填.')],
                                   render_kw={"placeholder": "未通过原因等", 'class': 'form-control mt-1 border border-1 border-success text-success', 'minlength': 0, 'maxlength': 350, 'resize': 'none'})
     #
     apply = SubmitField(u"确定", render_kw={'class': 'btn btn-primary'})
@@ -322,7 +322,7 @@ class SettingForm(FlaskForm):
 #     RCD_VIDEO = 4
 #     UGT_VIDEO = 5
 #     CHT_VIDEO = 6
-# video_types = ["微视频", "简化视频", "引述结构视频", "创作结构视频", "纪录片", "应急视频", "访谈视频"]
+# video_types = ["Tiny Video", "Simplified Video", "State StructuredVideo", "Create StructedVideo", "Documentary", "EmergencyVideo", "Interview Video"]
 class WeightForm(FlaskForm):
     '''
     '''
@@ -330,36 +330,36 @@ class WeightForm(FlaskForm):
     def __init__(self, type=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if type == E_VIDEO_TYPE .MIC_VIDEO:
-            self.name = "微视频"
+            self.name = "Tiny Video"
             self.id = 'MIC_VIDEO'.lower()
         elif type == E_VIDEO_TYPE .SIM_VIDEO:
-            self.name = "简化视频"
+            self.name = "Simplified Video"
             self.id = 'SIM_VIDEO'.lower()
         elif type == E_VIDEO_TYPE .REF_VIDEO:
-            self.name = "引述结构视频"
+            self.name = "State StructuredVideo"
             self.id = 'REF_VIDEO'.lower()
         elif type == E_VIDEO_TYPE .CRT_VIDEO:
-            self.name = "创作结构视频"
+            self.name = "Create StructedVideo"
             self.id = 'CRT_VIDEO'.lower()
         elif type == E_VIDEO_TYPE .RCD_VIDEO:
-            self.name = "纪录片"
+            self.name = "Documentary"
             self.id = 'RCD_VIDEO'.lower()
         elif type == E_VIDEO_TYPE .UGT_VIDEO:
-            self.name = "应急视频"
+            self.name = "EmergencyVideo"
             self.id = 'UGT_VIDEO'.lower()
         elif type == E_VIDEO_TYPE .CHT_VIDEO:
-            self.name = "访谈视频"
+            self.name = "Interview Video"
             self.id = 'CHT_VIDEO'.lower()
         else:
             # self.name = "FKCCP"
             # self.id = 'NSFC'.lower()
-            self.mic_name = "微视频"
-            self.sim_name = "简化视频"
-            self.ref_name = "引述结构视频"
-            self.crt_name = "创作结构视频"
-            self.rcd_name = "纪录片"
-            self.ugt_name = "应急视频"
-            self.cht_name = "访谈视频"
+            self.mic_name = "Tiny Video"
+            self.sim_name = "Simplified Video"
+            self.ref_name = "State StructuredVideo"
+            self.crt_name = "Create StructedVideo"
+            self.rcd_name = "Documentary"
+            self.ugt_name = "EmergencyVideo"
+            self.cht_name = "Interview Video"
             self.mic_id = 'MIC_VIDEO'.lower()
             self.sim_id = 'SIM_VIDEO'.lower()
             self.ref_id = 'REF_VIDEO'.lower()
@@ -376,8 +376,8 @@ class WeightForm(FlaskForm):
     # indicater = StringField("(%):", validators=[DataRequired()], render_kw={
     #     'class': 'form-control border border-2 border-danger text-danger text-center', 'readonly': 'true'})
 
-    # ["微视频", "简化视频", "引述结构视频", "创作结构视频", "纪录片", "应急视频", "访谈视频"]
-    mic_plan = IntegerRangeField('策划权重:', default='1', render_kw={
+    # ["Tiny Video", "Simplified Video", "State StructuredVideo", "Create StructedVideo", "Documentary", "EmergencyVideo", "Interview Video"]
+    mic_plan = IntegerRangeField('Design权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-mic', 'min': 0, 'max': 100, 'step': 1, 'list': 'tickmarks', 'oninput': "weight_change(this);", 'oncdbllick': "this.disabled=false;"})
 
     mic_edit = IntegerRangeField('编辑权重', default='1', render_kw={
@@ -395,7 +395,7 @@ class WeightForm(FlaskForm):
     mic_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-mic', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
     # ***********************************************************************************
-    sim_plan = IntegerRangeField('策划权重:', default='1', render_kw={
+    sim_plan = IntegerRangeField('Design权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-sim', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
     sim_edit = IntegerRangeField('编辑权重', default='1', render_kw={
@@ -413,7 +413,7 @@ class WeightForm(FlaskForm):
     sim_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-sim', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
     # ***********************************************************************************
-    ref_plan = IntegerRangeField('策划权重:', default='1', render_kw={
+    ref_plan = IntegerRangeField('Design权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-ref', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
     ref_edit = IntegerRangeField('编辑权重', default='1', render_kw={
@@ -431,7 +431,7 @@ class WeightForm(FlaskForm):
     ref_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-ref', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
     # ***********************************************************************************
-    crt_plan = IntegerRangeField('策划权重:', default='1', render_kw={
+    crt_plan = IntegerRangeField('Design权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-crt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
     crt_edit = IntegerRangeField('编辑权重', default='1', render_kw={
@@ -449,7 +449,7 @@ class WeightForm(FlaskForm):
     crt_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-crt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
     # ***********************************************************************************
-    rcd_plan = IntegerRangeField('策划权重:', default='1', render_kw={
+    rcd_plan = IntegerRangeField('Design权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-rcd', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
     rcd_edit = IntegerRangeField('编辑权重', default='1', render_kw={
@@ -467,7 +467,7 @@ class WeightForm(FlaskForm):
     rcd_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-rcd', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
     # ***********************************************************************************
-    ugt_plan = IntegerRangeField('策划权重:', default='1', render_kw={
+    ugt_plan = IntegerRangeField('Design权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-ugt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
     ugt_edit = IntegerRangeField('编辑权重', default='1', render_kw={
@@ -485,7 +485,7 @@ class WeightForm(FlaskForm):
     ugt_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-ugt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
     # ***********************************************************************************
-    cht_plan = IntegerRangeField('策划权重:', default='1', render_kw={
+    cht_plan = IntegerRangeField('Design权重:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-cht', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
     cht_edit = IntegerRangeField('编辑权重', default='1', render_kw={
@@ -610,25 +610,25 @@ class PointForm(FlaskForm):
     # RCD_VIDEO = 4
     # UGT_VIDEO = 5
     # CHT_VIDEO = 6
-    mic_video = IntegerField('微视频:', render_kw={
+    mic_video = IntegerField('Tiny Video:', render_kw={
         'class': 'form-control border border-2 border-danger text-danger bg-light mt-1 rounded-pill'})
 
-    sim_video = IntegerField('简化视频:', render_kw={
+    sim_video = IntegerField('Simplified Video:', render_kw={
         'class': 'form-control border border-2 border-info text-info bg-light mt-1 rounded-pill'})
 
-    ref_video = IntegerField('引述结构视频:', render_kw={
+    ref_video = IntegerField('State StructuredVideo:', render_kw={
         'class': 'form-control border border-2 border-warning text-warning bg-light mt-1 rounded-pill'})
 
-    crt_video = IntegerField('创作结构视频:', render_kw={
+    crt_video = IntegerField('Create StructedVideo:', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill'})
 
-    rcd_video = IntegerField('纪录片:', render_kw={
+    rcd_video = IntegerField('Documentary:', render_kw={
         'class': 'form-control border border-2 border-danger text-danger bg-light mt-1 rounded-pill'})
 
-    ugt_video = IntegerField('应急视频:', render_kw={
+    ugt_video = IntegerField('EmergencyVideo:', render_kw={
         'class': 'form-control border border-2 border-info text-info bg-light mt-1 rounded-pill'})
 
-    cht_video = IntegerField('访谈视频:', render_kw={
+    cht_video = IntegerField('Interview Video:', render_kw={
         'class': 'form-control border border-2 border-warning text-warning bg-light mt-1 rounded-pill'})
 
     submit_mic = SubmitField(
