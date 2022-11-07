@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     if app.config["FLASK_ENV"] == "development":
         # 1, flask server
-        app.run(host="0.0.0.0")
+        app.run()
 
         # # 2, hypercorn server
         # asgi_app = WsgiToAsgi(app)
