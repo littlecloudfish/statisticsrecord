@@ -4,7 +4,7 @@
 <div class="row text-center">
   <h3 class="col-sm-12">{{ sub_title }}</h3>
 </div>
-{# 成员账号 #}
+{# MateAccount #}
 <div class="form-out">
   <form action="{{ request.path }}" method="post">
     {{ form.csrf_token }}
@@ -21,7 +21,7 @@
     </div>
   </form>
 </div>
-{# 战队账号 #}
+{# TeamAccount #}
 <div class="form-out">
   <form action="{{ request.path }}" method="post">
     {{ form.csrf_token }}
@@ -39,8 +39,8 @@
   </form>
 </div>
 
-{# Number据库管理员账号 #}
-{% if current_user.account_type.name == "Number据库管理员" %}
+{# NumberDatabaseManagementAccount #}
+{% if current_user.account_type.name == "NumberDatabaseManagement" %}
 <div class="form-out">
   <form action="{{ request.path }}" method="post">
     {{ form.csrf_token }}

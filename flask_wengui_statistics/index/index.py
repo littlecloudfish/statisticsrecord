@@ -49,7 +49,7 @@ index_bp = Blueprint(
 
 def account_num():
     # account_type = AccountType.query.filter_by(
-    #     name="积分申报战队").first()
+    #     name="PointReportTeam").first()
     # team_accounts = Account.query.filter_by(account_type=account_type).all()
     accounts = Account.query.all()
     return len(accounts)
@@ -73,7 +73,7 @@ def data_init():
                for video in submit_frame['options'][E_SUBMIT_TYPE.VIDEO]['options']]
 
     # video_mic_ops: Tiny Video,
-    # Tiny Video<Design<Tiny Video>, 文案编辑<Tiny Video>, 文案审核<Tiny Video>, 配音<Tiny Video>, 翻译<Tiny Video>, 翻译校对<Tiny Video>>
+    # Tiny Video<Design<Tiny Video>, File Edit<Tiny Video>, File InReview<Tiny Video>, Voice<Tiny Video>, Translate<Tiny Video>, Correction<Tiny Video>>
 
     # video_sim_ops: Simplified Video,
     # video_ref_ops: State StructuredVideo,
@@ -160,7 +160,7 @@ def ip_black_init():
 
 
 def account_theme_init(themes):
-    '''账号主题初始化'''
+    '''Account主题初始化'''
     results = Theme.query.all()
     if not results:
         for theme in themes:
@@ -170,7 +170,7 @@ def account_theme_init(themes):
 
 
 def account_status_init(status):
-    '''账号状态初始化'''
+    '''AccountStatus初始化'''
     results = AccountStatus.query.all()
     if not results:
         for status in status:
@@ -180,7 +180,7 @@ def account_status_init(status):
 
 
 def account_type_init(types):
-    '''账号Type初始化'''
+    '''AccountType初始化'''
     results = AccountType.query.all()
     if not results:
         for type in types:
@@ -190,31 +190,31 @@ def account_type_init(types):
 
 
 def account_init(account_tests):
-    '''账号初始化'''
+    '''Account初始化'''
     results = Account.query.all()
     if not results:
         # for account in accounts:
         # for idx, account in enumerate(accounts):
         for account in account_tests:
-            if "个人" in account['name']:
+            if "Personal" in account['name']:
                 account_type = AccountType.query.filter_by(
-                    name="积分申报个人").first()
+                    name="PointReportPersonal").first()
                 member = None
-            elif "成员" in account['name']:
+            elif "Mate" in account['name']:
                 account_type = AccountType.query.filter_by(
-                    name="积分申报成员").first()
-                member = Account.query.filter_by(name="战队测试1").first()
-            elif "战队" in account['name']:
+                    name="PointReportMate").first()
+                member = Account.query.filter_by(name="TeamTest1").first()
+            elif "Team" in account['name']:
                 account_type = AccountType.query.filter_by(
-                    name="积分申报战队").first()
+                    name="PointReportTeam").first()
                 member = None
-            elif "管理" in account['name']:
+            elif "Management" in account['name']:
                 account_type = AccountType.query.filter_by(
-                    name="积分申报管理").first()
+                    name="PointReportManagement").first()
                 member = None
             else:
                 account_type = AccountType.query.filter_by(
-                    name="Number据库管理员").first()
+                    name="NumberDatabaseManagement").first()
                 member = None
             new_account = Account(name=account['name'],
                                   team_name=account['team_name'],
@@ -233,14 +233,14 @@ def account_init(account_tests):
         db.session.commit()
 
         # account_type = AccountType.query.filter(
-        #     AccountType.name.like('%战队%')).first()
+        #     AccountType.name.like('%Team%')).first()
         # teams = Account.query.filter_by(account_type=account_type).all()
         # for team in teams:
         #     db.session.query(Account).filter_by(id=team.id).update(
         #         {"team_id": team.id}, synchronize_session=False)
 
         account_type = AccountType.query.filter(
-            AccountType.name.like('%成员%')).first()
+            AccountType.name.like('%Mate%')).first()
         members = Account.query.filter_by(account_type=account_type).all()
         for member in members:
             if not not member.team_id:
@@ -263,7 +263,7 @@ def category_init(categories):
 
 
 def submit_status_init(status):
-    '''提交状态初始化'''
+    '''SubmitStatus初始化'''
     results = VideoSubmitStatus.query.all()
     if not results:
         for status in status:
@@ -419,9 +419,9 @@ def submit_init(submit_tests):
         category = Category.query.filter(
             Category.name.like('Video')).first()
         submit_status = VideoSubmitStatus.query.filter(
-            VideoSubmitStatus.name.like('%待审核%')).first()
-        # search = "%{}%".format('成员')
-        account = Account.query.filter(Account.name.like('%战队%')).first()
+            VideoSubmitStatus.name.like('%WaitInReview%')).first()
+        # search = "%{}%".format('Mate')
+        account = Account.query.filter(Account.name.like('%Team%')).first()
 
         from pypinyin import pinyin, lazy_pinyin, Style
         team_initials = pinyin(account.team_name, style=Style.FIRST_LETTER)

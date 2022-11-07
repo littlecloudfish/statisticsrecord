@@ -48,7 +48,7 @@ def signup():
             flash(category='success', message="注册成功,请登录！")
             return redirect(url_for("auth_bp.login"))
         else:
-            flash(category='error', message="用户已存在！")
+            flash(category='error', message="用户Already存在！")
     return render_template(
         "signup.jinja2",
         form=form,

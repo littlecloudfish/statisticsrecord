@@ -14,24 +14,24 @@ class VideoSubmitForm(FlaskForm):
     '''
     '''
     name = HiddenField('name')
-    teams = SelectField('战队', coerce=int, default=0, render_kw={
+    teams = SelectField('Team', coerce=int, default=0, render_kw={
         'class': 'form-control mt-1 form-select bg-light border border-3 border-danger rounded-pill'})
     # point = HiddenField('point')
     #
     option = RadioField(u"", coerce=int, validate_choice=False, render_kw={
         'class': 'form-check-input'}, default=1)
     # else:
-    title = StringField('Video名称',
+    title = StringField('Video Name',
                         #   validators=[DataRequired(
-                        #       message='Video名称必填.')],
-                        render_kw={"placeholder": "Video名称", 'class': 'form-control mt-1 border border-3 border-info text-primary bg-light', 'minlength': 1, 'maxlength': 150})
+                        #       message='Video Name必填.')],
+                        render_kw={"placeholder": "Video Name", 'class': 'form-control mt-1 border border-3 border-info text-primary bg-light', 'minlength': 1, 'maxlength': 150})
     # team_code = StringField(
-    #     "作品编号",
-    #     # validators=[DataRequired("作品编号必填.")],
+    #     "CreativeWorkCode",
+    #     # validators=[DataRequired("CreativeWorkCode必填.")],
     #     render_kw={'class': 'form-control rounded-pill', 'readonly': 'true'}
     # )
 
-    length = TimeField('Video时长',
+    length = TimeField('Video Length',
                        format='%H:%M:%S',
                        #    validators=[DataRequired()],
                        render_kw={'placeholder': '起始时间', 'step': '1',
@@ -52,32 +52,32 @@ class VideoSubmitForm(FlaskForm):
     )
     link = URLField('Link',
                     # validators=[DataRequired()],
-                    render_kw={'placeholder': '作品Link', 'class': 'form-control mt-1 bg-light rounded-pill'})
+                    render_kw={'placeholder': 'CreativeWorkLink', 'class': 'form-control mt-1 bg-light rounded-pill'})
     disk_link = URLField('DriveLink',
                          # validators=[DataRequired()],
                          render_kw={'placeholder': 'DriveLink', 'class': 'form-control mt-1 bg-light rounded-pill'})
-    # 文案编辑
-    # 文案审核
-    # 配音
-    # 翻译
-    # 翻译校队
-    plan = SelectField('Design(没有则留空)', default=0, coerce=int, render_kw={
+    # File Edit
+    # File InReview
+    # Voice
+    # Translate
+    # TranslateCorrection
+    plan = SelectField('Design(Empty Allowed)', default=0, coerce=int, render_kw={
                        'class': 'form-control mt-1 form-select border border-3 border-danger text-danger bg-light rounded-pill'})
-    edit = SelectField('编辑(没有则留空)', default=0, coerce=int, render_kw={
+    edit = SelectField('Edit(Empty Allowed)', default=0, coerce=int, render_kw={
                        'class': 'form-control mt-1 form-select border border-3 border-info text-info bg-light rounded-pill'})
-    audit = SelectField('文案审核(没有则留空)', default=0, coerce=int,  render_kw={
+    audit = SelectField('File InReview(Empty Allowed)', default=0, coerce=int,  render_kw={
                         'class': 'form-control mt-1 form-select border border-3 border-warning bg-light text-warning rounded-pill'})
-    dubb = SelectField('配音(没有则留空)', default=0, coerce=int,  render_kw={
+    dubb = SelectField('Voice(Empty Allowed)', default=0, coerce=int,  render_kw={
         'class': 'form-control mt-1 form-select border border-3 border-primary text-primary bg-light rounded-pill'})
-    trans = SelectField('翻译(没有则留空)', default=0, coerce=int,  render_kw={
+    trans = SelectField('Translate(Empty Allowed)', default=0, coerce=int,  render_kw={
                         'class': 'form-control mt-1 form-select border border-3 border-danger text-danger bg-light rounded-pill'})
-    check = SelectField('翻译校队(没有则留空)', default=0, coerce=int,  render_kw={
+    check = SelectField('TranslateCorrection(Empty Allowed)', default=0, coerce=int,  render_kw={
                         'class': 'form-control mt-1 form-select border border-3 border-success bg-light text-success rounded-pill'})
     #
-    comment = TextAreaField('备注',
+    comment = TextAreaField('Comment',
                             #   validators=[DataRequired(
-                            #       message='Video名称必填.')],
-                            render_kw={"placeholder": "提交说明, 备注等", 'class': 'form-control mt-1 border border-3 border-info text-primary bg-light', 'minlength': 0, 'maxlength': 350})
+                            #       message='Video Name必填.')],
+                            render_kw={"placeholder": "SubmitExplain, Commentetc", 'class': 'form-control mt-1 border border-3 border-info text-primary bg-light', 'minlength': 0, 'maxlength': 350})
     #
 
     last = SubmitField(
@@ -89,46 +89,46 @@ class VideoSubmitForm(FlaskForm):
 class TypeForm(FlaskForm):
     """?? Form."""
 
-    personal = SelectField(u'成员账号', render_kw={
+    personal = SelectField(u'MateAccount', render_kw={
         'class': 'form-control mt-1 form-select'})
-    team = SelectField(u'战队账号', render_kw={
+    team = SelectField(u'TeamAccount', render_kw={
                        'class': 'form-control mt-1 form-select'})
-    admin = SelectField(u'管理员账号', render_kw={
+    admin = SelectField(u'ManagementAccount', render_kw={
         'class': 'form-control mt-1 form-select'})
     personal_type = SelectField(
-        u'账号Type', render_kw={'class': 'form-control mt-1 form-select'})
+        u'AccountType', render_kw={'class': 'form-control mt-1 form-select'})
     team_type = SelectField(
-        u'账号Type', render_kw={'class': 'form-control mt-1 form-select'})
+        u'AccountType', render_kw={'class': 'form-control mt-1 form-select'})
     admin_type = SelectField(
-        u'账号Type', render_kw={'class': 'form-control mt-1 form-select'})
+        u'AccountType', render_kw={'class': 'form-control mt-1 form-select'})
     # account_type = SelectField(
-    #     u'账号Type', render_kw={'class': 'form-control form-select'})
-    submit = SubmitField(u"修改为", render_kw={'class': 'btn btn-primary'})
+    #     u'AccountType', render_kw={'class': 'form-control form-select'})
+    submit = SubmitField(u"ChangeAs", render_kw={'class': 'btn btn-primary'})
 
 
 class StatusForm(FlaskForm):
     """?? Form."""
 
-    # ["Normal", "挂起", "只读", "锁定"]
-    normal = SelectField(u'账号(Normal)', render_kw={
+    # ["Normal", "Suspending", "ReadOnly", "Locked"]
+    normal = SelectField(u'Account(Normal)', render_kw={
         'class': 'form-control mt-1 form-select'})
-    pending = SelectField(u'账号(挂起)', render_kw={
+    pending = SelectField(u'Account(Suspending)', render_kw={
         'class': 'form-control mt-1 form-select'})
-    read = SelectField(u'账号(只读)', render_kw={
+    read = SelectField(u'Account(ReadOnly)', render_kw={
         'class': 'form-control mt-1 form-select'})
     locked = SelectField(
-        u'账号(锁定)', render_kw={'class': 'form-control mt-1 form-select'})
+        u'Account(Locked)', render_kw={'class': 'form-control mt-1 form-select'})
     #
     status_normal = SelectField(
-        u'状态选择', render_kw={'class': 'form-control mt-1 form-select'})
+        u'StatusChoice', render_kw={'class': 'form-control mt-1 form-select'})
     status_pending = SelectField(
-        u'状态选择', render_kw={'class': 'form-control mt-1 form-select'})
+        u'StatusChoice', render_kw={'class': 'form-control mt-1 form-select'})
     status_read = SelectField(
-        u'状态选择', render_kw={'class': 'form-control mt-1 form-select'})
+        u'StatusChoice', render_kw={'class': 'form-control mt-1 form-select'})
     status_locked = SelectField(
-        u'状态选择', render_kw={'class': 'form-control mt-1 form-select'})
+        u'StatusChoice', render_kw={'class': 'form-control mt-1 form-select'})
     #
-    submit = SubmitField(u"修改为", render_kw={'class': 'btn btn-primary'})
+    submit = SubmitField(u"ChangeAs", render_kw={'class': 'btn btn-primary'})
 
 # primary， success ， info ， warning ， danger ， secondary ， dark ， light，
 
@@ -165,7 +165,7 @@ class CreateForm(FlaskForm):
         if self.type.data != 0:
             type = self.type.data
             choice = self.type.choices[type][1]
-            if (u'成员' in choice) and self.team.data == 0:
+            if (u'Mate' in choice) and self.team.data == 0:
                 return False
         return True
 
@@ -176,23 +176,23 @@ class AuditForm(FlaskForm):
     #
     title = StringField('Video Name',
                         #   validators=[DataRequired(
-                        #       message='Video名称必填.')],
-                        render_kw={"placeholder": "Video名称", 'class': 'form-control mt-1 border border-1 border-primary text-primar, rounded-pill', 'minlength': 5, 'maxlength': 150, 'readonly': 'true'})
+                        #       message='Video Name必填.')],
+                        render_kw={"placeholder": "Video Name", 'class': 'form-control mt-1 border border-1 border-primary text-primar, rounded-pill', 'minlength': 5, 'maxlength': 150, 'readonly': 'true'})
     global_code = StringField(
-        "作品编号(全球)",
-        # validators=[DataRequired("作品编号必填.")],
+        "CreativeWorkCode(Global)",
+        # validators=[DataRequired("CreativeWorkCode必填.")],
         render_kw={
             'class': 'form-control mt-1 border border-1 border-success text-success rounded-pill', 'readonly': 'true'}
     )
 
     team_code = StringField(
-        "作品编号(战队)",
-        # validators=[DataRequired("作品编号必填.")],
+        "CreativeWorkCode(Team)",
+        # validators=[DataRequired("CreativeWorkCode必填.")],
         render_kw={
             'class': 'form-control mt-1 border border-1 border-success text-success rounded-pill', 'readonly': 'true'}
     )
 
-    # length = TimeField('Video时长',
+    # length = TimeField('Video Length',
     #                    format='%H:%M:%S',
     #                    #    validators=[DataRequired()],
     #                    render_kw={'placeholder': '起始时间', 'step': '1',
@@ -204,7 +204,7 @@ class AuditForm(FlaskForm):
     #                    default=time()
     #                    )
     length = StringField(
-        "Video时长", render_kw={'class': 'form-control mt-1 border border-1 border-info text-info rounded-pill', 'readonly': 'true'}
+        "Video Length", render_kw={'class': 'form-control mt-1 border border-1 border-info text-info rounded-pill', 'readonly': 'true'}
         # validators=[DataRequired("协调必填.")]
     )
 
@@ -218,7 +218,7 @@ class AuditForm(FlaskForm):
     )
     link = URLField('Link',
                     # validators=[DataRequired()],
-                    render_kw={'placeholder': '作品Link', 'class': 'form-control mt-1 border border-1 border-secondary text-secondary rounded-pill', 'readonly': 'true'})
+                    render_kw={'placeholder': 'CreativeWorkLink', 'class': 'form-control mt-1 border border-1 border-secondary text-secondary rounded-pill', 'readonly': 'true'})
     disk_link = URLField('DriveLink',
                          # validators=[DataRequired()],
                          render_kw={'placeholder': 'DriveLink', 'class': 'form-control mt-1 border border-1 border-dark  rounded-pill', 'readonly': 'true'})
@@ -228,43 +228,43 @@ class AuditForm(FlaskForm):
     plan_point = StringField('', render_kw={
         'class': 'form-control mt-1 border border-1 border-primary text-primary rounded-pill', 'readonly': 'true'})
 
-    edit = StringField('编辑', render_kw={
+    edit = StringField('Edit', render_kw={
                        'class': 'form-control mt-1 border border-1 border-success text-success rounded-pill', 'readonly': 'true'})
     edit_point = StringField('', render_kw={
         'class': 'form-control mt-1 border border-1 border-success text-success rounded-pill', 'readonly': 'true'})
 
-    audit = StringField('文案审核', render_kw={
+    audit = StringField('File InReview', render_kw={
                         'class': 'form-control mt-1 border border-1 border-info text-info rounded-pill', 'readonly': 'true'})
     audit_point = StringField('', render_kw={
         'class': 'form-control mt-1 border border-1 border-info text-info rounded-pill', 'readonly': 'true'})
 
-    dubb = StringField('配音', render_kw={
+    dubb = StringField('Voice', render_kw={
                        'class': 'form-control mt-1 border border-1 border-warning text-warning rounded-pill', 'readonly': 'true'})
     dubb_point = StringField('', render_kw={
         'class': 'form-control mt-1 border border-1 border-warning text-warning rounded-pill', 'readonly': 'true'})
 
-    trans = StringField('翻译', render_kw={
+    trans = StringField('Translate', render_kw={
                         'class': 'form-control mt-1 border border-1 border-danger text-danger rounded-pill', 'readonly': 'true'})
     trans_point = StringField('', render_kw={
         'class': 'form-control mt-1 border border-1 border-danger text-danger rounded-pill', 'readonly': 'true'})
 
-    check = StringField('翻译校队', render_kw={
+    check = StringField('TranslateCorrection', render_kw={
                         'class': 'form-control mt-1 border border-1 border-secondary text-secondary rounded-pill', 'readonly': 'true'})
     check_point = StringField('', render_kw={
         'class': 'form-control mt-1 border border-1 border-secondary text-secondary rounded-pill', 'readonly': 'true'})
     #
-    comment = TextAreaField('备注',
+    comment = TextAreaField('Comment',
                             #   validators=[DataRequired(
-                            #       message='Video名称必填.')],
-                            render_kw={"placeholder": "提交说明, 备注等", 'class': 'form-control mt-1 border border-1 border-danger text-danger', 'minlength': 0, 'maxlength': 350, 'readonly': 'true'})
-    comment_audit = TextAreaField('审核反馈',
+                            #       message='Video Name必填.')],
+                            render_kw={"placeholder": "SubmitExplain, Commentetc", 'class': 'form-control mt-1 border border-1 border-danger text-danger', 'minlength': 0, 'maxlength': 350, 'readonly': 'true'})
+    comment_audit = TextAreaField('InReview Feedback',
                                   #   validators=[DataRequired(
-                                  #       message='Video名称必填.')],
-                                  render_kw={"placeholder": "未通过原因等", 'class': 'form-control mt-1 border border-1 border-success text-success', 'minlength': 0, 'maxlength': 350, 'resize': 'none'})
+                                  #       message='Video Name必填.')],
+                                  render_kw={"placeholder": " Rejected Reasonetc", 'class': 'form-control mt-1 border border-1 border-success text-success', 'minlength': 0, 'maxlength': 350, 'resize': 'none'})
     #
-    apply = SubmitField(u"确定", render_kw={'class': 'btn btn-primary'})
-    approve = SubmitField(u"通过", render_kw={'class': 'btn btn-primary'})
-    deny = SubmitField(u"参照反馈,重新提交", render_kw={'class': 'btn btn-primary'})
+    apply = SubmitField(u"Yes", render_kw={'class': 'btn btn-primary'})
+    approve = SubmitField(u"Pass", render_kw={'class': 'btn btn-primary'})
+    deny = SubmitField(u"Resubmit", render_kw={'class': 'btn btn-primary'})
 
 
 class SettingForm(FlaskForm):
@@ -368,164 +368,164 @@ class WeightForm(FlaskForm):
             self.ugt_id = 'UGT_VIDEO'.lower()
             self.cht_id = 'CHT_VIDEO'.lower()
 
-    # 文案编辑
-    # 文案审核
-    # 配音
-    # 翻译
-    # 翻译校队
+    # File Edit
+    # File InReview
+    # Voice
+    # Translate
+    # TranslateCorrection
     # indicater = StringField("(%):", validators=[DataRequired()], render_kw={
     #     'class': 'form-control border border-2 border-danger text-danger text-center', 'readonly': 'true'})
 
     # ["Tiny Video", "Simplified Video", "State StructuredVideo", "Create StructedVideo", "Documentary", "EmergencyVideo", "Interview Video"]
-    mic_plan = IntegerRangeField('Design权重:', default='1', render_kw={
+    mic_plan = IntegerRangeField('DesignWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-mic', 'min': 0, 'max': 100, 'step': 1, 'list': 'tickmarks', 'oninput': "weight_change(this);", 'oncdbllick': "this.disabled=false;"})
 
-    mic_edit = IntegerRangeField('编辑权重', default='1', render_kw={
+    mic_edit = IntegerRangeField('EditWeight', default='1', render_kw={
         'class': 'form-control border border-2 border-success text-success bg-light mt-1 rounded-pill weight-slider weight-mic', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this);"})
 
-    mic_audit = IntegerRangeField('文案审核权重:', default='1', render_kw={
+    mic_audit = IntegerRangeField('File InReviewWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-info text-info bg-light mt-1 rounded-pill weight-slider weight-mic', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    mic_dubb = IntegerRangeField('配音权重:', default='1', render_kw={
+    mic_dubb = IntegerRangeField('VoiceWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-warning text-warning bg-light mt-1 rounded-pill weight-slider weight-mic', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    mic_trans = IntegerRangeField('翻译权重:', default='1', render_kw={
+    mic_trans = IntegerRangeField('TranslateWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-danger text-danger bg-light mt-1 rounded-pill weight-slider weight-mic', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    mic_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
+    mic_check = IntegerRangeField('TranslateCorrectionWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-mic', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
     # ***********************************************************************************
-    sim_plan = IntegerRangeField('Design权重:', default='1', render_kw={
+    sim_plan = IntegerRangeField('DesignWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-sim', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    sim_edit = IntegerRangeField('编辑权重', default='1', render_kw={
+    sim_edit = IntegerRangeField('EditWeight', default='1', render_kw={
         'class': 'form-control border border-2 border-success text-success bg-light mt-1 rounded-pill weight-slider weight-sim', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    sim_audit = IntegerRangeField('文案审核权重:', default='1', render_kw={
+    sim_audit = IntegerRangeField('File InReviewWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-info text-info bg-light mt-1 rounded-pill weight-slider weight-sim', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    sim_dubb = IntegerRangeField('配音权重:', default='1', render_kw={
+    sim_dubb = IntegerRangeField('VoiceWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-warning text-warning bg-light mt-1 rounded-pill weight-slider weight-sim', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    sim_trans = IntegerRangeField('翻译权重:', default='1', render_kw={
+    sim_trans = IntegerRangeField('TranslateWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-danger text-danger bg-light mt-1 rounded-pill weight-slider weight-sim', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    sim_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
+    sim_check = IntegerRangeField('TranslateCorrectionWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-sim', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
     # ***********************************************************************************
-    ref_plan = IntegerRangeField('Design权重:', default='1', render_kw={
+    ref_plan = IntegerRangeField('DesignWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-ref', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    ref_edit = IntegerRangeField('编辑权重', default='1', render_kw={
+    ref_edit = IntegerRangeField('EditWeight', default='1', render_kw={
         'class': 'form-control border border-2 border-success text-success bg-light mt-1 rounded-pill weight-slider weight-ref', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    ref_audit = IntegerRangeField('文案审核权重:', default='1', render_kw={
+    ref_audit = IntegerRangeField('File InReviewWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-info text-info bg-light mt-1 rounded-pill weight-slider weight-ref', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    ref_dubb = IntegerRangeField('配音权重:', default='1', render_kw={
+    ref_dubb = IntegerRangeField('VoiceWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-warning text-warning bg-light mt-1 rounded-pill weight-slider weight-ref', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    ref_trans = IntegerRangeField('翻译权重:', default='1', render_kw={
+    ref_trans = IntegerRangeField('TranslateWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-danger text-danger bg-light mt-1 rounded-pill weight-slider weight-ref', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    ref_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
+    ref_check = IntegerRangeField('TranslateCorrectionWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-ref', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
     # ***********************************************************************************
-    crt_plan = IntegerRangeField('Design权重:', default='1', render_kw={
+    crt_plan = IntegerRangeField('DesignWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-crt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    crt_edit = IntegerRangeField('编辑权重', default='1', render_kw={
+    crt_edit = IntegerRangeField('EditWeight', default='1', render_kw={
         'class': 'form-control border border-2 border-success text-success bg-light mt-1 rounded-pill weight-slider weight-crt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    crt_audit = IntegerRangeField('文案审核权重:', default='1', render_kw={
+    crt_audit = IntegerRangeField('File InReviewWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-info text-info bg-light mt-1 rounded-pill weight-slider weight-crt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    crt_dubb = IntegerRangeField('配音权重:', default='1', render_kw={
+    crt_dubb = IntegerRangeField('VoiceWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-warning text-warning bg-light mt-1 rounded-pill weight-slider weight-crt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    crt_trans = IntegerRangeField('翻译权重:', default='1', render_kw={
+    crt_trans = IntegerRangeField('TranslateWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-danger text-danger bg-light mt-1 rounded-pill weight-slider weight-crt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    crt_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
+    crt_check = IntegerRangeField('TranslateCorrectionWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-crt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
     # ***********************************************************************************
-    rcd_plan = IntegerRangeField('Design权重:', default='1', render_kw={
+    rcd_plan = IntegerRangeField('DesignWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-rcd', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    rcd_edit = IntegerRangeField('编辑权重', default='1', render_kw={
+    rcd_edit = IntegerRangeField('EditWeight', default='1', render_kw={
         'class': 'form-control border border-2 border-success text-success bg-light mt-1 rounded-pill weight-slider weight-rcd', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    rcd_audit = IntegerRangeField('文案审核权重:', default='1', render_kw={
+    rcd_audit = IntegerRangeField('File InReviewWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-info text-info bg-light mt-1 rounded-pill weight-slider weight-rcd', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    rcd_dubb = IntegerRangeField('配音权重:', default='1', render_kw={
+    rcd_dubb = IntegerRangeField('VoiceWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-warning text-warning bg-light mt-1 rounded-pill weight-slider weight-rcd', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    rcd_trans = IntegerRangeField('翻译权重:', default='1', render_kw={
+    rcd_trans = IntegerRangeField('TranslateWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-danger text-danger bg-light mt-1 rounded-pill weight-slider weight-rcd', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    rcd_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
+    rcd_check = IntegerRangeField('TranslateCorrectionWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-rcd', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
     # ***********************************************************************************
-    ugt_plan = IntegerRangeField('Design权重:', default='1', render_kw={
+    ugt_plan = IntegerRangeField('DesignWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-ugt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    ugt_edit = IntegerRangeField('编辑权重', default='1', render_kw={
+    ugt_edit = IntegerRangeField('EditWeight', default='1', render_kw={
         'class': 'form-control border border-2 border-success text-success bg-light mt-1 rounded-pill weight-slider weight-ugt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    ugt_audit = IntegerRangeField('文案审核权重:', default='1', render_kw={
+    ugt_audit = IntegerRangeField('File InReviewWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-info text-info bg-light mt-1 rounded-pill weight-slider weight-ugt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    ugt_dubb = IntegerRangeField('配音权重:', default='1', render_kw={
+    ugt_dubb = IntegerRangeField('VoiceWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-warning text-warning bg-light mt-1 rounded-pill weight-slider weight-ugt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    ugt_trans = IntegerRangeField('翻译权重:', default='1', render_kw={
+    ugt_trans = IntegerRangeField('TranslateWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-danger text-danger bg-light mt-1 rounded-pill weight-slider weight-ugt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    ugt_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
+    ugt_check = IntegerRangeField('TranslateCorrectionWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-ugt', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
     # ***********************************************************************************
-    cht_plan = IntegerRangeField('Design权重:', default='1', render_kw={
+    cht_plan = IntegerRangeField('DesignWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-primary text-primary bg-light mt-1 rounded-pill weight-slider weight-cht', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    cht_edit = IntegerRangeField('编辑权重', default='1', render_kw={
+    cht_edit = IntegerRangeField('EditWeight', default='1', render_kw={
         'class': 'form-control border border-2 border-success text-success bg-light mt-1 rounded-pill weight-slider weight-cht', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    cht_audit = IntegerRangeField('文案审核权重:', default='1', render_kw={
+    cht_audit = IntegerRangeField('File InReviewWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-info text-info bg-light mt-1 rounded-pill weight-slider weight-cht', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    cht_dubb = IntegerRangeField('配音权重:', default='1', render_kw={
+    cht_dubb = IntegerRangeField('VoiceWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-warning text-warning bg-light mt-1 rounded-pill weight-slider weight-cht', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    cht_trans = IntegerRangeField('翻译权重:', default='1', render_kw={
+    cht_trans = IntegerRangeField('TranslateWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-danger text-danger bg-light mt-1 rounded-pill weight-slider weight-cht', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
 
-    cht_check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
+    cht_check = IntegerRangeField('TranslateCorrectionWeight:', default='1', render_kw={
         'class': 'form-control border border-2 border-secondary text-secondary bg-light mt-1 rounded-pill weight-slider weight-cht', 'min': 0, 'max': 100, 'step': 1, 'oninput': "weight_change(this)"})
-    # check = IntegerRangeField('翻译校队权重:', default='1', render_kw={
+    # check = IntegerRangeField('TranslateCorrectionWeight:', default='1', render_kw={
     #     'class': 'form-control border border-2 border-secondary text-secondary bg-light rounded-pill', 'min': 0, 'max': 100, 'step': 1, 'oninput': "this.previousElementSibling.previousElementSibling.innerHTML = this.value"})
 
     mic_submit = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
     sim_submit = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
     ref_submit = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
     crt_submit = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
     rcd_submit = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
     ugt_submit = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
     cht_submit = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
 
     def validate_mic(self):
         weight_total = int(self.mic_plan.raw_data[0]) + int(self.mic_edit.raw_data[0]) + int(self.mic_audit.raw_data[0]) + \
             int(self.mic_dubb.raw_data[0]) + \
             int(self.mic_trans.raw_data[0]) + int(self.mic_check.raw_data[0])
         if weight_total > 100:
-            flash(category='error', message='总权重不能大于100%!')
+            flash(category='error', message='TotalWeight不能大于100%!')
             return False
         else:
             return True
@@ -535,7 +535,7 @@ class WeightForm(FlaskForm):
             int(self.sim_dubb.raw_data[0]) + \
             int(self.sim_trans.raw_data[0]) + int(self.sim_check.raw_data[0])
         if weight_total > 100:
-            flash(category='error', message='总权重不能大于100%!')
+            flash(category='error', message='TotalWeight不能大于100%!')
             return False
         else:
             return True
@@ -545,7 +545,7 @@ class WeightForm(FlaskForm):
             int(self.ref_dubb.raw_data[0]) + \
             int(self.ref_trans.raw_data[0]) + int(self.ref_check.raw_data[0])
         if weight_total > 100:
-            flash(category='error', message='总权重不能大于100%!')
+            flash(category='error', message='TotalWeight不能大于100%!')
             return False
         else:
             return True
@@ -555,7 +555,7 @@ class WeightForm(FlaskForm):
             int(self.crt_dubb.raw_data[0]) + \
             int(self.crt_trans.raw_data[0]) + int(self.crt_check.raw_data[0])
         if weight_total > 100:
-            flash(category='error', message='总权重不能大于100%!')
+            flash(category='error', message='TotalWeight不能大于100%!')
             return False
         else:
             return True
@@ -565,7 +565,7 @@ class WeightForm(FlaskForm):
             int(self.rcd_dubb.raw_data[0]) + \
             int(self.rcd_trans.raw_data[0]) + int(self.rcd_check.raw_data[0])
         if weight_total > 100:
-            flash(category='error', message='总权重不能大于100%!')
+            flash(category='error', message='TotalWeight不能大于100%!')
             return False
         else:
             return True
@@ -575,7 +575,7 @@ class WeightForm(FlaskForm):
             int(self.ugt_dubb.raw_data[0]) + \
             int(self.ugt_trans.raw_data[0]) + int(self.ugt_check.raw_data[0])
         if weight_total > 100:
-            flash(category='error', message='总权重不能大于100%!')
+            flash(category='error', message='TotalWeight不能大于100%!')
             return False
         else:
             return True
@@ -585,7 +585,7 @@ class WeightForm(FlaskForm):
             int(self.cht_dubb.raw_data[0]) + \
             int(self.cht_trans.raw_data[0]) + int(self.cht_check.raw_data[0])
         if weight_total > 100:
-            flash(category='error', message='总权重不能大于100%!')
+            flash(category='error', message='TotalWeight不能大于100%!')
             return False
         else:
             return True
@@ -632,25 +632,25 @@ class PointForm(FlaskForm):
         'class': 'form-control border border-2 border-warning text-warning bg-light mt-1 rounded-pill'})
 
     submit_mic = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
 
     submit_sim = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
 
     submit_ref = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
 
     submit_crt = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
 
     submit_rcd = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
 
     submit_ugt = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
 
     submit_cht = SubmitField(
-        u"设置", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
+        u"Setting", render_kw={'class': 'btn btn-primary col-sm-2 w-100'})
 
 
 class BackupForm(FlaskForm):

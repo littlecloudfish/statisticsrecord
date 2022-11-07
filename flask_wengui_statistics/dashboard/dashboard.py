@@ -75,27 +75,27 @@ def dashboard_init():
 
     # global submit_idx
     # g_vars_list[submit_idx]["theme"] = "dark" if current_user.theme.name == "Deep Color" else "white?"
-    if current_user.account_type.name == "积分申报个人":
+    if current_user.account_type.name == "PointReportPersonal":
         _g_account_type = E_ACCOUNT_TYPE.PERSONAL
         menu = [{"icon": "bx bx-cloud-upload icon", "isize": '28px',
-                 "url": "dashboard_bp.submit_v1v2", "text": "积分申报v1", "active": True},
+                 "url": "dashboard_bp.submit_v1v2", "text": "PointReportv1", "active": True},
                 {"icon": "bx bx-credit-card-front icon", "isize": '28px',
                  "url": "dashboard_bp.point", "text": "My Point", "active": True},
                 {"icon": "bx bxs-cog icon", "isize": '28px',
                  "url": "dashboard_bp.setting", "text": "My Setting", "active": True},
                 {"icon": "bx bx-run bx-flip-horizontal icon", "isize": '28px',
                  "url": "auth_bp.logout", "text": "Logout", "active": True}]
-    elif current_user.account_type.name == "积分申报成员":
+    elif current_user.account_type.name == "PointReportMate":
         _g_account_type = E_ACCOUNT_TYPE.MEMBER
         menu = [  # {"icon": "bx bx-cloud-upload icon", "isize": '28px',
-            #  "url": "dashboard_bp.submit_v1v2", "text": "积分申报v1", "active": True},
+            #  "url": "dashboard_bp.submit_v1v2", "text": "PointReportv1", "active": True},
             {"icon": "bx bx-credit-card-front icon", "isize": '28px',
              "url": "dashboard_bp.point", "text": "My Point", "active": True},
             {"icon": "bx bxs-cog icon", "isize": '28px',
              "url": "dashboard_bp.setting", "text": "My Setting", "active": True},
             {"icon": "bx bx-run bx-flip-horizontal icon", "isize": '28px',
              "url": "auth_bp.logout", "text": "Logout", "active": True}]
-    elif current_user.account_type.name == "积分申报战队":
+    elif current_user.account_type.name == "PointReportTeam":
         _g_account_type = E_ACCOUNT_TYPE.TEAM
         menu = [{"icon": "bx bx-cloud-upload icon", "isize": '28px',
                  "url": "dashboard_bp.submit_v1v2", "text": "Point Reportv2", "active": True},
@@ -106,7 +106,7 @@ def dashboard_init():
                 {"icon": "bx bx-run bx-flip-horizontal icon", "isize": '28px',
                  "url": "auth_bp.logout", "text": "Logout", "active": True}]
 
-    elif current_user.account_type.name == "积分申报管理":
+    elif current_user.account_type.name == "PointReportManagement":
         _g_account_type = E_ACCOUNT_TYPE.ADMIN
         menu = [{"icon": "bx bx-cloud-upload icon", "isize": '28px',
                  "url": "dashboard_bp.submit_v3", "text": "Point Reportv3", "active": True},
@@ -131,9 +131,9 @@ def dashboard_init():
         menu = [{"icon": "bx bxs-user-rectangle icon", "isize": '28px',
                 "url": "dashboard_bp.dashboard", "text": "Manager Dashboard", "active": True},
                 # {"icon": "bx bxs-group icon", "isize": '28px',
-                #  "url": "dashboard_bp.account", "text": "账号管理(Type)", "active": True},
+                #  "url": "dashboard_bp.account", "text": "AccountManagement(Type)", "active": True},
                 # {"icon": "bx bxs-lock-open-alt icon", "isize": '28px',
-                #  "url": "dashboard_bp.status", "text": "账号管理(状态)", "active": True},
+                #  "url": "dashboard_bp.status", "text": "AccountManagement(Status)", "active": True},
                 {"icon": "bx bxs-folder-plus icon", "isize": '28px',
                  "url": "dashboard_bp.create", "text": "Account Create", "active": True},
                 {"icon": "bx bx-transfer icon", "isize": '28px',
@@ -183,9 +183,9 @@ def create():
     [menu, _vars] = dashboard_init()
 
     types = AccountType.query.filter(AccountType.name.like(
-        '%申报个人%') | AccountType.name.like('%申报成员%') | AccountType.name.like('%申报战队%') | AccountType.name.like('%申报管理%')).all()
+        '%ReportPersonal%') | AccountType.name.like('%ReportMate%') | AccountType.name.like('%ReportTeam%') | AccountType.name.like('%ReportManagement%')).all()
     teams = Account.query.join(AccountType).filter(
-        AccountType.name.like('%战队%')).all()
+        AccountType.name.like('%Team%')).all()
 
     form = CreateForm()
 
@@ -259,7 +259,7 @@ def record():
     # records = db.session.query(IP.ip).distinct().all()
 
     # from sqlalchemy import func, desc
-    # # 3, 统计每个IP地址访问的次Number，降序结果， func.count, group_by，desc
+    # # 3, Counting每个IP地址访问的次Number，降序结果， func.count, group_by，desc
     # records = records = IP.query.with_entities(
     #     IP.page,
     #     IP.ip,
@@ -281,7 +281,7 @@ def record():
     # ('50.72.43.125', 'Winnipeg', 2)
     # ('70.80.220.62', 'Montreal', 1)
 
-    # 4, 统计每个IP地址访问的次Number和最近一次访问的时间， func.count, group_by，
+    # 4, Counting每个IP地址访问的次Number和最近一次访问的时间， func.count, group_by，
     records = IP.query.with_entities(
         IP.page,
         IP.ip,
@@ -302,7 +302,7 @@ def record():
     # from sqlalchemy.orm import defer
     # from sqlalchemy.orm import undefer
 
-    # # 5, 统计每个IP地址访问的次Number和最近一次访问的时间（undefer('*')），， func.count, group_by，undefer
+    # # 5, Counting每个IP地址访问的次Number和最近一次访问的时间（undefer('*')），， func.count, group_by，undefer
     # # records = IP.query.options(undefer('*'))
     # records = IP.query.options(undefer('*'))\
     #     .with_entities(func.max(IP.time).label('latest'),
@@ -335,7 +335,7 @@ def dashboard_theme():
 
     return render_template(
         "dashboard.jinja2",
-        title="后台管理",
+        title="BackManagement",
 
         menu=menu,
         _vars=_vars,
@@ -402,7 +402,7 @@ def dashboard():
 
     return render_template(
         "dashboard.jinja2",
-        title="后台管理",
+        title="BackManagement",
         fkccp="Background Management",
 
         menu=menu,
@@ -421,7 +421,7 @@ def status():
         return redirect(url_for("dashboard_bp.dashboard"))
 
     """
-    状态更改，
+    Status更改，
     """
     [menu, _vars] = dashboard_init()
 
@@ -429,30 +429,30 @@ def status():
     # # #
     accounts_normal = Account.query.join(AccountStatus).filter(
         AccountStatus.name.like('Normal')).join(AccountType).filter(
-        AccountType.name.like('积分申报成员') | AccountType.name.like('积分申报战队')).all()
+        AccountType.name.like('PointReportMate') | AccountType.name.like('PointReportTeam')).all()
 
     accounts_pending = Account.query.join(AccountStatus).filter(
-        AccountStatus.name.like('挂起')).join(AccountType).filter(
-        AccountType.name.like('积分申报成员') | AccountType.name.like('积分申报战队')).all()
+        AccountStatus.name.like('Suspending')).join(AccountType).filter(
+        AccountType.name.like('PointReportMate') | AccountType.name.like('PointReportTeam')).all()
 
     accounts_read = Account.query.join(AccountStatus).filter(
-        AccountStatus.name.like('只读')).join(AccountType).filter(
-        AccountType.name.like('积分申报成员') | AccountType.name.like('积分申报战队')).all()
+        AccountStatus.name.like('ReadOnly')).join(AccountType).filter(
+        AccountType.name.like('PointReportMate') | AccountType.name.like('PointReportTeam')).all()
 
     accounts_locked = Account.query.join(AccountStatus).filter(
-        AccountStatus.name.like('锁定')).join(AccountType).filter(
-        AccountType.name.like('积分申报成员') | AccountType.name.like('积分申报战队')).all()
+        AccountStatus.name.like('Locked')).join(AccountType).filter(
+        AccountType.name.like('PointReportMate') | AccountType.name.like('PointReportTeam')).all()
     #
     status_normal = AccountStatus.query.filter(
         AccountStatus.name.notlike('Normal')).all()
     status_pending = AccountStatus.query.filter(
-        AccountStatus.name.notlike('挂起')).all()
+        AccountStatus.name.notlike('Suspending')).all()
     status_read = AccountStatus.query.filter(
-        AccountStatus.name.notlike('只读')).all()
+        AccountStatus.name.notlike('ReadOnly')).all()
     status_locked = AccountStatus.query.filter(
-        AccountStatus.name.notlike('锁定')).all()
+        AccountStatus.name.notlike('Locked')).all()
 
-    if current_user.account_type.name == "Number据库管理员" or current_user.account_type.name == "积分申报管理":
+    if current_user.account_type.name == "NumberDatabaseManagement" or current_user.account_type.name == "PointReportManagement":
         #[(1, 'C++'), (2, 'Python'), (3, 'Plain Text')]
         form.normal.choices = [(normal.id, normal.name + ' <' + normal.email + '>')
                                for normal in accounts_normal]
@@ -492,7 +492,7 @@ def status():
             account.account_status_id = status_normal_id
             #
             # personal.account_type = AccountType.query.filter(
-            #     AccountType.name.like('积分申报战队')).first()
+            #     AccountType.name.like('PointReportTeam')).first()
             db.session.commit()
         elif account_pending_id != None:
             account = Account.query.get(account_pending_id)
@@ -510,8 +510,8 @@ def status():
         return redirect(url_for("dashboard_bp.status"))
     return render_template(
         "status.jinja2",
-        title="账号状态管理 | 后台管理",
-        sub_title="账号状态编辑",
+        title="AccountStatusManagement | BackManagement",
+        sub_title="AccountStatusEdit",
 
         menu=menu,
         form=form,
@@ -560,11 +560,11 @@ def audit():
     global _g_AuditSelected
 
     submits = VideoSubmit.query.join(VideoSubmitStatus).filter(
-        VideoSubmitStatus.name.like('待审核')).all()
+        VideoSubmitStatus.name.like('WaitInReview')).all()
 
     form = AuditForm()
-    form.auditing.choices = [('0', '-- 请选择待审核作品 --')] \
-        + [(submit.id, submit.title + "-" + (submit.account.team_name if submit.account.team_name != None else u'个人提交'))
+    form.auditing.choices = [('0', '-- PleaseSelectWaitInReviewCreativeWork --')] \
+        + [(submit.id, submit.title + "-" + (submit.account.team_name if submit.account.team_name != None else u'PersonalSubmit'))
            for submit in submits]
 
     if _g_AuditSelected != None:
@@ -581,11 +581,11 @@ def audit():
         from flask_wengui_statistics import account_points
 
         form.plan.data, form.plan_point.data = account_points(submit, 'Design<')
-        form.edit.data, form.edit_point.data = account_points(submit, '编辑<')
-        form.audit.data, form.audit_point.data = account_points(submit, '审核<')
-        form.dubb.data, form.dubb_point.data = account_points(submit, '配音<')
-        form.trans.data, form.trans_point.data = account_points(submit, '翻译<')
-        form.check.data, form.check_point.data = account_points(submit, '校对<')
+        form.edit.data, form.edit_point.data = account_points(submit, 'Edit<')
+        form.audit.data, form.audit_point.data = account_points(submit, 'InReview<')
+        form.dubb.data, form.dubb_point.data = account_points(submit, 'Voice<')
+        form.trans.data, form.trans_point.data = account_points(submit, 'Translate<')
+        form.check.data, form.check_point.data = account_points(submit, 'Correction<')
 
         form.comment.data = submit.comment
 
@@ -600,7 +600,7 @@ def audit():
         elif form.approve.data == True:
             if form.auditing.data != 0:
                 status = VideoSubmitStatus.query.filter(
-                    VideoSubmitStatus.name.like('%通过%')).first()
+                    VideoSubmitStatus.name.like('%Pass%')).first()
                 db.session.query(VideoSubmit).filter_by(id=form.auditing.data).update(
                     {"submit_status_id": status.id}, synchronize_session=False)
 
@@ -611,8 +611,8 @@ def audit():
         return redirect(url_for("dashboard_bp.audit"))
     return render_template(
         "audit.jinja2",
-        title="账号Type修改 | 后台管理",
-        sub_title="作品提交审核",
+        title="AccountType修改 | BackManagement",
+        sub_title="CreativeWorkSubmitInReview",
 
         menu=menu,
         _vars=_vars,
@@ -633,7 +633,7 @@ def summary():
         return redirect(url_for("dashboard_bp.dashboard"))
 
     teams = Account.query.join(AccountType).filter(
-        AccountType.name.like('%战队%')).all()
+        AccountType.name.like('%Team%')).all()
 
     record_num = 0
     for team in teams:
@@ -644,8 +644,8 @@ def summary():
 
     return render_template(
         "summary.jinja2",
-        title="作品统计 | 后台管理",
-        sub_title="作品统计",
+        title="CreativeWorkCounting | BackManagement",
+        sub_title="CreativeWorkCounting",
 
         menu=menu,
         _vars=_vars,
@@ -665,27 +665,27 @@ def account():
     [menu, _vars] = dashboard_init()
 
     personal_account = AccountType.query.filter(
-        AccountType.name.like('积分申报成员')).first()
+        AccountType.name.like('PointReportMate')).first()
     team_account = AccountType.query.filter(
-        AccountType.name.like('积分申报战队')).first()
+        AccountType.name.like('PointReportTeam')).first()
     admin_account = AccountType.query.filter(
-        AccountType.name.like('积分申报管理')).first()
+        AccountType.name.like('PointReportManagement')).first()
 
     personals = Account.query.filter_by(account_type=personal_account).all()
     teams = Account.query.filter_by(account_type=team_account).all()
     admins = Account.query.filter_by(account_type=admin_account).all()
 
     # types = AccountType.query.filter(AccountType.name.like(
-    #     '积分申报战队') | AccountType.name.like('积分申报成员')).all()
+    #     'PointReportTeam') | AccountType.name.like('PointReportMate')).all()
     form = TypeForm()
 
-    if current_user.account_type.name == "Number据库管理员":
+    if current_user.account_type.name == "NumberDatabaseManagement":
         personal_type = AccountType.query.filter(
-            AccountType.name.like('积分申报战队') | AccountType.name.like('积分申报管理')).all()
+            AccountType.name.like('PointReportTeam') | AccountType.name.like('PointReportManagement')).all()
         team_type = AccountType.query.filter(
-            AccountType.name.like('积分申报成员') | AccountType.name.like('积分申报管理')).all()
+            AccountType.name.like('PointReportMate') | AccountType.name.like('PointReportManagement')).all()
         admin_type = AccountType.query.filter(
-            AccountType.name.like('积分申报成员') | AccountType.name.like('积分申报战队')).all()
+            AccountType.name.like('PointReportMate') | AccountType.name.like('PointReportTeam')).all()
 
         #[(1, 'C++'), (2, 'Python'), (3, 'Plain Text')]
         form.personal.choices = [(personal.id, personal.name)
@@ -701,11 +701,11 @@ def account():
                                   for type in team_type]
         form.admin_type.choices = [(type.id, type.name)
                                    for type in admin_type]
-    elif current_user.account_type.name == "积分申报管理":
+    elif current_user.account_type.name == "PointReportManagement":
         personal_type = AccountType.query.filter(
-            AccountType.name.like('积分申报战队')).all()
+            AccountType.name.like('PointReportTeam')).all()
         team_type = AccountType.query.filter(
-            AccountType.name.like('积分申报成员')).all()
+            AccountType.name.like('PointReportMate')).all()
         #[(1, 'C++'), (2, 'Python'), (3, 'Plain Text')]
         form.personal.choices = [(personal.id, personal.name)
                                  for personal in personals]
@@ -740,28 +740,28 @@ def account():
             personal.account_type_id = personal_type_id
             #
             # personal.account_type = AccountType.query.filter(
-            #     AccountType.name.like('积分申报战队')).first()
+            #     AccountType.name.like('PointReportTeam')).first()
             db.session.commit()
         elif team_id != None:
             team = Account.query.get(team_id)
             team.account_type_id = team_type_id
             #
             # team.account_type = AccountType.query.filter(
-            #     AccountType.name.like('积分申报成员')).first()
+            #     AccountType.name.like('PointReportMate')).first()
             db.session.commit()
         else:
             admin = Account.query.get(admin_id)
             admin.account_type_id = admin_type_id
             #
             # team.account_type = AccountType.query.filter(
-            #     AccountType.name.like('积分申报成员')).first()
+            #     AccountType.name.like('PointReportMate')).first()
             db.session.commit()
 
         return redirect(url_for("dashboard_bp.account"))
     return render_template(
         "account.jinja2",
-        title="账号Type修改 | 后台管理",
-        sub_title="账号Type变更",
+        title="AccountType修改 | BackManagement",
+        sub_title="AccountTypeChange",
 
         menu=menu,
         _vars=_vars,
@@ -833,7 +833,7 @@ def submit_v1v2():
 
         if current_options[0]['submit'] == True:
             is_submit = True
-            form.next.label.text = "提交"
+            form.next.label.text = "Submit"
 
             form.plan.choices = [('0', '-- Choose --')] + [
                 (account.id, account.name + ' <' + account.email + '>')]
@@ -853,19 +853,19 @@ def submit_v1v2():
 
         if current_options[0]['submit'] == True:
             is_submit = True
-            form.next.label.text = "提交"
+            form.next.label.text = "Submit"
 
-            form.plan.choices = [(0, '-- Choose Member --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.plan.choices = [(0, '-- Choose Member --')] + [(member.id, 'Mate: ' + member.name + ' <' + member.email + '>')
                                                         for member in members]
-            form.edit.choices = [(0, '-- Choose Member --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.edit.choices = [(0, '-- Choose Member --')] + [(member.id, 'Mate: ' + member.name + ' <' + member.email + '>')
                                                         for member in members]
-            form.audit.choices = [(0, '-- Choose Member --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.audit.choices = [(0, '-- Choose Member --')] + [(member.id, 'Mate: ' + member.name + ' <' + member.email + '>')
                                                          for member in members]
-            form.dubb.choices = [(0, '-- Choose Member --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.dubb.choices = [(0, '-- Choose Member --')] + [(member.id, 'Mate: ' + member.name + ' <' + member.email + '>')
                                                         for member in members]
-            form.trans.choices = [(0, '-- Choose Member --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.trans.choices = [(0, '-- Choose Member --')] + [(member.id, 'Mate: ' + member.name + ' <' + member.email + '>')
                                                          for member in members]
-            form.check.choices = [(0, '-- Choose Member --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.check.choices = [(0, '-- Choose Member --')] + [(member.id, 'Mate: ' + member.name + ' <' + member.email + '>')
                                                          for member in members]
             #
             # submits_num = len(current_user.submits)
@@ -884,7 +884,7 @@ def submit_v1v2():
         else:
             if is_submit == False:
                 # if current_user.team_id != None:
-                #     flash(category="error", message="Team Member账号不能独立提交!")
+                #     flash(category="error", message="Team MemberAccount不能独立Submit!")
                 #     return redirect(url_for("dashboard_bp.submit_v1v2"))
 
                 if steps == 0:
@@ -905,7 +905,7 @@ def submit_v1v2():
                 check_id = form.check.data
 
                 if (plan_id + edit_id + audit_id + dubb_id + trans_id + check_id) == 0:
-                    flash(category='error', message="请选择负责本任务的各模块战友！")
+                    flash(category='error', message="Please Choose Mate！")
                     return redirect(url_for("dashboard_bp.submit_v1v2"))
 
                 category_id = _submit_v1v2[0]['value']  # Video
@@ -922,7 +922,7 @@ def submit_v1v2():
 
                 comment = form.comment.data
                 submit_status = VideoSubmitStatus.query.filter(
-                    VideoSubmitStatus.name.like('%待审核%')).first()
+                    VideoSubmitStatus.name.like('%WaitInReview%')).first()
 
                 submits_all = VideoSubmit.query.all()
                 submits_team = VideoSubmit.query.filter_by(
@@ -983,7 +983,7 @@ def submit_v1v2():
                 # *******************************
                 if edit_id != 0:
                     operation = Operation.query.filter(
-                        Operation.name.like('%编辑<{}>%'.format(video_type))).first()
+                        Operation.name.like('%Edit<{}>%'.format(video_type))).first()
                     point = (base_point * edit_weight) // 100
 
                     new_edit = AccountOperation(
@@ -997,7 +997,7 @@ def submit_v1v2():
                 # *******************************
                 if audit_id != 0:
                     operation = Operation.query.filter(
-                        Operation.name.like('%审核<{}>%'.format(video_type))).first()
+                        Operation.name.like('%InReview<{}>%'.format(video_type))).first()
                     point = (base_point * audit_weight) // 100
 
                     new_audit = AccountOperation(
@@ -1011,7 +1011,7 @@ def submit_v1v2():
                 # *******************************
                 if dubb_id != 0:
                     operation = Operation.query.filter(
-                        Operation.name.like('%配音<{}>%'.format(video_type))).first()
+                        Operation.name.like('%Voice<{}>%'.format(video_type))).first()
                     point = (base_point * dubb_weight) // 100
 
                     new_dubb = AccountOperation(
@@ -1025,7 +1025,7 @@ def submit_v1v2():
                 # *******************************
                 if trans_id != 0:
                     operation = Operation.query.filter(
-                        Operation.name.like('%翻译<{}>%'.format(video_type))).first()
+                        Operation.name.like('%Translate<{}>%'.format(video_type))).first()
                     point = (base_point * trans_weight) // 100
 
                     new_trans = AccountOperation(
@@ -1039,7 +1039,7 @@ def submit_v1v2():
                 # *******************************
                 if check_id != 0:
                     operation = Operation.query.filter(
-                        Operation.name.like('%校对<{}>%'.format(video_type))).first()
+                        Operation.name.like('%Correction<{}>%'.format(video_type))).first()
                     point = (base_point * check_weight) // 100
 
                     new_check = AccountOperation(
@@ -1110,10 +1110,10 @@ def submit_v3():
     if is_initial:
         is_submit = False
         team = AccountType.query.filter(
-            AccountType.name.like('积分申报战队')).first()
+            AccountType.name.like('PointReportTeam')).first()
 
         teams = Account.query.filter_by(account_type=team).all()
-        form.teams.choices = [(0, '-- 请选择战队 --')] + [(team.id, team.name)
+        form.teams.choices = [(0, '-- PleaseSelectTeam --')] + [(team.id, team.name)
                                                      for team in teams]
 
     else:
@@ -1142,20 +1142,20 @@ def submit_v3():
             # form.team_code.data = (''.join(i[0].upper() for i in team_initials))[
             #     0:3:1]+'-'+(str(submits_num).zfill(4))
 
-            form.plan.choices = [(0, '-- 请选择成员 --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.plan.choices = [(0, '-- PleaseSelectMate --')] + [(member.id, 'Mate: ' + member.name + ' <' + member.email + '>')
                                                         for member in members]
-            form.edit.choices = [(0, '-- 请选择成员 --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.edit.choices = [(0, '-- PleaseSelectMate --')] + [(member.id, 'Mate: ' + member.name + ' <' + member.email + '>')
                                                         for member in members]
-            form.audit.choices = [(0, '-- 请选择成员 --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.audit.choices = [(0, '-- PleaseSelectMate --')] + [(member.id, 'Mate: ' + member.name + ' <' + member.email + '>')
                                                          for member in members]
-            form.dubb.choices = [(0, '-- 请选择成员 --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.dubb.choices = [(0, '-- PleaseSelectMate --')] + [(member.id, 'Mate: ' + member.name + ' <' + member.email + '>')
                                                         for member in members]
-            form.trans.choices = [(0, '-- 请选择成员 --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.trans.choices = [(0, '-- PleaseSelectMate --')] + [(member.id, 'Mate: ' + member.name + ' <' + member.email + '>')
                                                          for member in members]
-            form.check.choices = [(0, '-- 请选择成员 --')] + [(member.id, '成员: ' + member.name + ' <' + member.email + '>')
+            form.check.choices = [(0, '-- PleaseSelectMate --')] + [(member.id, 'Mate: ' + member.name + ' <' + member.email + '>')
                                                          for member in members]
 
-            form.next.label.text = "提交"
+            form.next.label.text = "Submit"
 
     if request.method == 'POST':
         last = form.data['last']
@@ -1168,9 +1168,9 @@ def submit_v3():
             if is_submit == False:
                 if steps == 0:
                     if form.teams.data == 0:
-                        flash(category='error', message="请选择战队！")
+                        flash(category='error', message="PleaseSelectTeam！")
                         return redirect(url_for("dashboard_bp.submit_v3"))
-                    _submit_v3.append({"name": '战队',
+                    _submit_v3.append({"name": 'Team',
                                        "value": form.teams.data})
                 elif steps == 1:
                     category = Category.query.get(form.data['option'])
@@ -1190,10 +1190,10 @@ def submit_v3():
                 check_id = form.check.data
 
                 if (plan_id + edit_id + audit_id + dubb_id + trans_id + check_id) == 0:
-                    flash(category='error', message="请选择负责本任务的各模块战友！")
+                    flash(category='error', message="Please Choose Mate！")
                     return redirect(url_for("dashboard_bp.submit_v3"))
 
-                team_id = _submit_v3[0]['value']  # 战队n
+                team_id = _submit_v3[0]['value']  # Teamn
 
                 category_id = _submit_v3[1]['value']  # Video
                 sub_category_id = _submit_v3[2]['value']  # Simplified Video
@@ -1209,7 +1209,7 @@ def submit_v3():
 
                 comment = form.comment.data
                 submit_status = VideoSubmitStatus.query.filter(
-                    VideoSubmitStatus.name.like('%待审核%')).first()
+                    VideoSubmitStatus.name.like('%WaitInReview%')).first()
 
                 submits_all = VideoSubmit.query.all()
                 submits_team = VideoSubmit.query.filter_by(
@@ -1274,7 +1274,7 @@ def submit_v3():
                 # *******************************
                 if edit_id != 0:
                     operation = Operation.query.filter(
-                        Operation.name.like('%文案编辑<{}>%'.format(video_type_name))).first()
+                        Operation.name.like('%File Edit<{}>%'.format(video_type_name))).first()
                     point = (base_point * edit_weight) // 100
 
                     new_edit = AccountOperation(
@@ -1290,7 +1290,7 @@ def submit_v3():
                 # *******************************
                 if audit_id != 0:
                     operation = Operation.query.filter(
-                        Operation.name.like('%文案审核<{}>%'.format(video_type_name))).first()
+                        Operation.name.like('%File InReview<{}>%'.format(video_type_name))).first()
                     point = (base_point * audit_weight) // 100
 
                     new_audit = AccountOperation(
@@ -1306,7 +1306,7 @@ def submit_v3():
                 # *******************************
                 if dubb_id != 0:
                     operation = Operation.query.filter(
-                        Operation.name.like('%配音<{}>%'.format(video_type_name))).first()
+                        Operation.name.like('%Voice<{}>%'.format(video_type_name))).first()
                     point = (base_point * dubb_weight) // 100
 
                     new_dubb = AccountOperation(
@@ -1322,7 +1322,7 @@ def submit_v3():
                 # *******************************
                 if trans_id != 0:
                     operation = Operation.query.filter(
-                        Operation.name.like('%翻译<{}>%'.format(video_type_name))).first()
+                        Operation.name.like('%Translate<{}>%'.format(video_type_name))).first()
                     point = (base_point * trans_weight) // 100
 
                     new_trans = AccountOperation(
@@ -1338,7 +1338,7 @@ def submit_v3():
                 # *******************************
                 if check_id != 0:
                     operation = Operation.query.filter(
-                        Operation.name.like('%翻译校对<{}>%'.format(video_type_name))).first()
+                        Operation.name.like('%Correction<{}>%'.format(video_type_name))).first()
                     point = (base_point * check_weight) // 100
 
                     new_check = AccountOperation(
@@ -1353,14 +1353,14 @@ def submit_v3():
 
                 db.session.commit()
                 _submit_v3.clear()
-                flash(category='success', message="积分申报成功，感谢您为新中国联邦建设的努力！")
+                flash(category='success', message="PointReport成功，感谢您为新中国联邦建设的努力！")
 
                 return redirect(url_for("dashboard_bp.dashboard"))
         return redirect(url_for("dashboard_bp.submit_v3"))
     return render_template(
         "submit_v3.jinja2",
-        title="任务申报 | 后台管理",
-        sub_title="任务申报v3",
+        title="Task Report | BackManagement",
+        sub_title="Task Reportv3",
 
         menu=menu,
         teams=teams,
@@ -1420,7 +1420,7 @@ def member():
 
     return render_template(
         "member.jinja2",
-        title="我的成员 | 后台管理",
+        title="MyMate | BackManagement",
         sub_title="Team Member",
         #
         menu=menu,
@@ -1457,12 +1457,12 @@ def point():
 
     is_member = None
     # users = Account.query.all()
-    if u'成员' in current_user.account_type.name:
+    if u'Mate' in current_user.account_type.name:
         submits = VideoSubmit.query.join(AccountOperation).filter(
             AccountOperation.account_id == current_user.id)
         record_num += submits.count()
         is_member = True
-    elif u'个人' in current_user.account_type.name:
+    elif u'Personal' in current_user.account_type.name:
         submits = current_user.submits
         record_num += len(submits)
         is_member = False
@@ -1472,8 +1472,8 @@ def point():
 
     return render_template(
         "point.jinja2",
-        title="我的积分 | 后台管理",
-        sub_title="我的积分",
+        title="MyPoint | BackManagement",
+        sub_title="MyPoint",
         #
         menu=menu,
         _vars=_vars,
@@ -1575,15 +1575,15 @@ def weight():
                 db.session.query(Operation).filter(Operation.name.like(
                     '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
+                    '%Edit%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%审核%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
+                    '%InReview%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%配音%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
+                    '%Voice%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%翻译%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
+                    '%Translate%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%校对%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
+                    '%Correction%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
 
                 db.session.commit()
                 flash(category='success', message="更新成功！")
@@ -1601,15 +1601,15 @@ def weight():
                 db.session.query(Operation).filter(Operation.name.like(
                     '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
+                    '%Edit%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%审核%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
+                    '%InReview%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%配音%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
+                    '%Voice%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%翻译%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
+                    '%Translate%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%校对%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
+                    '%Correction%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
 
                 db.session.commit()
                 flash(category='success', message="更新成功！")
@@ -1627,15 +1627,15 @@ def weight():
                 db.session.query(Operation).filter(Operation.name.like(
                     '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
+                    '%Edit%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%审核%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
+                    '%InReview%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%配音%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
+                    '%Voice%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%翻译%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
+                    '%Translate%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%校对%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
+                    '%Correction%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
 
                 db.session.commit()
                 flash(category='success', message="更新成功！")
@@ -1653,15 +1653,15 @@ def weight():
                 db.session.query(Operation).filter(Operation.name.like(
                     '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
+                    '%Edit%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%审核%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
+                    '%InReview%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%配音%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
+                    '%Voice%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%翻译%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
+                    '%Translate%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%校对%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
+                    '%Correction%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
 
                 db.session.commit()
                 flash(category='success', message="更新成功！")
@@ -1679,15 +1679,15 @@ def weight():
                 db.session.query(Operation).filter(Operation.name.like(
                     '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
+                    '%Edit%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%审核%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
+                    '%InReview%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%配音%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
+                    '%Voice%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%翻译%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
+                    '%Translate%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%校对%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
+                    '%Correction%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
 
                 db.session.commit()
                 flash(category='success', message="更新成功！")
@@ -1705,15 +1705,15 @@ def weight():
                 db.session.query(Operation).filter(Operation.name.like(
                     '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
+                    '%Edit%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%审核%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
+                    '%InReview%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%配音%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
+                    '%Voice%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%翻译%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
+                    '%Translate%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%校对%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
+                    '%Correction%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
 
                 db.session.commit()
                 flash(category='success', message="更新成功！")
@@ -1731,15 +1731,15 @@ def weight():
                 db.session.query(Operation).filter(Operation.name.like(
                     '%Design%'), Operation.video == video).update({"weight": plan}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%编辑%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
+                    '%Edit%'), Operation.video == video).update({"weight": edit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%审核%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
+                    '%InReview%'), Operation.video == video).update({"weight": audit}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%配音%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
+                    '%Voice%'), Operation.video == video).update({"weight": dubb}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%翻译%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
+                    '%Translate%'), Operation.video == video).update({"weight": trans}, synchronize_session=False)
                 db.session.query(Operation).filter(Operation.name.like(
-                    '%校对%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
+                    '%Correction%'), Operation.video == video).update({"weight": check}, synchronize_session=False)
 
                 db.session.commit()
                 flash(category='success', message="更新成功！")
@@ -1747,8 +1747,8 @@ def weight():
         return redirect(url_for("dashboard_bp.weight"))
     return render_template(
         "weight.jinja2",
-        title="设置 | 后台管理",
-        sub_title="岗位权重设置",
+        title="Setting | BackManagement",
+        sub_title="PositionWeightSetting",
         #
         menu=menu,
         weight_page=True,
@@ -1809,12 +1809,12 @@ def pparameter():
 
         db.session.commit()
 
-        flash(category='success', message="积分参Number设置成功！")
+        flash(category='success', message="PointCheckNumberSetting成功！")
         return redirect(url_for("dashboard_bp.pparameter"))
     return render_template(
         "pparameter.jinja2",
-        title="积分参Number设置 | 后台管理",
-        sub_title="积分参Number设置",
+        title="PointCheckNumberSetting | BackManagement",
+        sub_title="PointCheckNumberSetting",
 
         #
         menu=menu,
@@ -1904,7 +1904,7 @@ def setting():
         return redirect(url_for("dashboard_bp.setting"))
     return render_template(
         "setting.jinja2",
-        title="Setting | 后台管理",
+        title="Setting | BackManagement",
         sub_title="Setting",
         #
         menu=menu,
@@ -1973,7 +1973,7 @@ def auth_list():
         return redirect(url_for("dashboard_bp.auth_list"))
     return render_template(
         "black_white.jinja2",
-        title="List of IP | 后台管理",
+        title="List of IP | BackManagement",
         sub_title="List of IP",
 
         menu=menu,
@@ -2018,7 +2018,7 @@ def backup():
         return redirect(url_for("dashboard_bp.backup"))
     return render_template(
         "backup.jinja2",
-        title="Database Backup | 后台管理",
+        title="Database Backup | BackManagement",
         sub_title="Database Backup",
         #
         menu=menu,

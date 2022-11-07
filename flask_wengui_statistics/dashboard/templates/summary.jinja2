@@ -7,7 +7,7 @@
 </div>
 
 <div class="d-flex justify-content-end">
-  <h5 style="letter-spacing: 2px;">战队Number：<b>{{ utils['get_count'](teams) }}</b></h5>
+  <h5 style="letter-spacing: 2px;">TeamNumber：<b>{{ utils['get_count'](teams) }}</b></h5>
 </div>
 <div class="mt-2 table-responsive-sm">
   {% for team in teams %}
@@ -16,7 +16,7 @@
       <h5>{{ team.team_name }}, {{ team.email.upper() }}</h5>
     </div>
     <div>
-      <h5>总积分:<b>{{ utils['team_points'](team) }}</b></h5>
+      <h5>TotalPoint:<b>{{ utils['team_points'](team) }}</b></h5>
     </div>
   </div>
   <table class="table table-striped mb-5 mt-2 border border-primary border-1">
@@ -29,15 +29,15 @@
         <th>Link</th>
         <th>DriveLink</th>
         <th>Design</th>
-        <th>文案编辑</th>
-        <th>文案审核</th>
-        <th>配音</th>
-        <th>翻译</th>
-        <th>翻译校对</th>
-        <th>注释</th>
-        <th>提交状态</th>
-        <th>提交日期</th>
-        {# <th>积分Number</th> #}
+        <th>File Edit</th>
+        <th>File InReview</th>
+        <th>Voice</th>
+        <th>Translate</th>
+        <th>Correction</th>
+        <th> Notes</th>
+        <th>SubmitStatus</th>
+        <th>Submited Date</th>
+        {# <th>PointNumber</th> #}
       </tr>
     </thead>
     <tbody>
@@ -55,13 +55,13 @@
         <td class="text-center" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ submit.disk_link }}"><a
             href="{{ submit.disk_link }}" target="_blank">{{ '<i class="bx bxs-disc" style="color:red"></i>' if
             submit.disk_link != None }}</a></td>
-        {# Design, 文案编辑, 文案审核, 配音, 翻译, 翻译校对 #}
+        {# Design, File Edit, File InReview, Voice, Translate, Correction #}
         <td>{{ utils['account_operation_points'](submit, 'Design<') }}</td>
-        <td>{{ utils['account_operation_points'](submit, '编辑<') }}</td>
-        <td>{{ utils['account_operation_points'](submit, '审核<') }}</td>
-        <td>{{ utils['account_operation_points'](submit, '配音<') }}</td>
-        <td>{{ utils['account_operation_points'](submit, '翻译<') }}</td>
-        <td>{{ utils['account_operation_points'](submit, '校对<') }}</td>
+        <td>{{ utils['account_operation_points'](submit, 'Edit<') }}</td>
+        <td>{{ utils['account_operation_points'](submit, 'InReview<') }}</td>
+        <td>{{ utils['account_operation_points'](submit, 'Voice<') }}</td>
+        <td>{{ utils['account_operation_points'](submit, 'Translate<') }}</td>
+        <td>{{ utils['account_operation_points'](submit, 'Correction<') }}</td>
 
         <td data-bs-toggle="tooltip" data-bs-placement="top" title="{{ submit.comment }}">{{
           utils['text_short'](submit.comment, 10, '...') if submit.comment != None else "" }}</td>

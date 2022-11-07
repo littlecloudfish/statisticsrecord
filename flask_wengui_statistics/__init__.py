@@ -22,54 +22,54 @@ IoT_Enable = False
 account_frame = {
     "__name__": "account_frame",
     "themes": ["Light Color", "Deep Color"],
-    "types": ["积分申报个人", "积分申报成员", "积分申报战队", "积分申报管理", "Number据库管理员"],
-    "status": ["Normal", "挂起", "只读", "锁定"],
+    "types": ["PointReportPersonal", "PointReportMate", "PointReportTeam", "PointReportManagement", "NumberDatabaseManagement"],
+    "status": ["Normal", "Suspending", "ReadOnly", "Locked"],
     "account_tests": [{"name": "Test Database", "team_name": None, "email": "data_admin@gmail.com",
                        "password": "111111"},
-                      {"name": "管理测试", "team_name": None, "email": "admin@gmail.com",
+                      {"name": "ManagementTest", "team_name": None, "email": "admin@gmail.com",
                           "password": "111111"},
                       #
-                      {"name": "战队测试1", "team_name": "Team1", "email": "team1@gmail.com",
+                      {"name": "TeamTest1", "team_name": "Team1", "email": "team1@gmail.com",
                           "password": "111111"},
-                      {"name": "战队测试2", "team_name": "地之水战队", "email": "team2@gmail.com",
-                          "password": "111111"},
-                      #
-                      {"name": "成员测试1", "team_name": None, "email": "member1@gmail.com",
-                          "password": "111111"},
-                      {"name": "成员测试2", "team_name": None, "email": "member2@gmail.com",
-                          "password": "111111"},
-                      {"name": "成员测试3", "team_name": None, "email": "member3@gmail.com",
-                          "password": "111111"},
-                      {"name": "成员测试4", "team_name": None, "email": "member4@gmail.com",
-                          "password": "111111"},
-                      {"name": "成员测试5", "team_name": None, "email": "member5@gmail.com",
-                          "password": "111111"},
-                      {"name": "成员测试6", "team_name": None, "email": "member6@gmail.com",
+                      {"name": "TeamTest2", "team_name": "ThistestTeam", "email": "team2@gmail.com",
                           "password": "111111"},
                       #
-                      {"name": "个人测试1", "team_name": None, "email": "personal1@gmail.com",
+                      {"name": "MateTest1", "team_name": None, "email": "member1@gmail.com",
+                          "password": "111111"},
+                      {"name": "MateTest2", "team_name": None, "email": "member2@gmail.com",
+                          "password": "111111"},
+                      {"name": "MateTest3", "team_name": None, "email": "member3@gmail.com",
+                          "password": "111111"},
+                      {"name": "MateTest4", "team_name": None, "email": "member4@gmail.com",
+                          "password": "111111"},
+                      {"name": "MateTest5", "team_name": None, "email": "member5@gmail.com",
+                          "password": "111111"},
+                      {"name": "MateTest6", "team_name": None, "email": "member6@gmail.com",
+                          "password": "111111"},
+                      #
+                      {"name": "PersonalTest1", "team_name": None, "email": "personal1@gmail.com",
                        "password": "111111"},
-                      {"name": "个人测试2", "team_name": None, "email": "personal2@gmail.com",
+                      {"name": "PersonalTest2", "team_name": None, "email": "personal2@gmail.com",
                        "password": "111111"}]
 }
 
 
 submit_frame = {
     "__name__": "submit_frame",
-    "status": ["已提交", "待审核", "通过", "退回"],
+    "status": ["AlreadySubmit", "WaitInReview", "Pass", "SendBack"],
     "submit": False,
-    "submit_tests": [{"title": "Video标题1", "point": 100,
+    "submit_tests": [{"title": "Video Title1", "point": 100,
                       "link": "https://www.google.ca/",
-                      "disk_link": "https://www.google.ca/", "length": 3670, "comment": "备注1"},
-                     {"title": "Video标题2", "point": 200,
+                      "disk_link": "https://www.google.ca/", "length": 3670, "comment": "Comment1"},
+                     {"title": "Video Title2", "point": 200,
                       "link": "https://www.google.ca/",
-                      "disk_link": "https://www.google.ca/", "length": 3500, "comment": "备注2"},
-                     {"title": "Video标题3", "point": 300,
+                      "disk_link": "https://www.google.ca/", "length": 3500, "comment": "Comment2"},
+                     {"title": "Video Title3", "point": 300,
                       "link": "https://www.google.ca/",
-                      "disk_link": "https://www.google.ca/", "length": 1800, "comment": "备注3"},
-                     {"title": "Video标题4", "point": 400,
+                      "disk_link": "https://www.google.ca/", "length": 1800, "comment": "Comment3"},
+                     {"title": "Video Title4", "point": 400,
                       "link": "https://www.google.ca/",
-                      "disk_link": "https://www.google.ca/", "length": 50, "comment": "备注4"}],
+                      "disk_link": "https://www.google.ca/", "length": 50, "comment": "Comment4"}],
     "options": [{
         "submit": False,
         "level": 1,
@@ -98,7 +98,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 2,
-                "name": "文案编辑<Tiny Video>",
+                "name": "File Edit<Tiny Video>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -106,21 +106,21 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 3,
-                "name": "文案审核<Tiny Video>",
+                "name": "File InReview<Tiny Video>",
                 "quality": [1, 2, 3],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 4,
-                "name": "配音<Tiny Video>",
+                "name": "Voice<Tiny Video>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 5,
-                "name": "翻译<Tiny Video>",
+                "name": "Translate<Tiny Video>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -128,7 +128,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 6,
-                "name": "翻译校对<Tiny Video>",
+                "name": "Correction<Tiny Video>",
                 "quality": [1, 2, 3],
                 "weight": 25,
             }]
@@ -154,7 +154,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 2,
-                "name": "文案编辑<Simplified Video>",
+                "name": "File Edit<Simplified Video>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -162,21 +162,21 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 3,
-                "name": "文案审核<Simplified Video>",
+                "name": "File InReview<Simplified Video>",
                 "quality": [1, 2, 3],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 4,
-                "name": "配音<Simplified Video>",
+                "name": "Voice<Simplified Video>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 5,
-                "name": "翻译<Simplified Video>",
+                "name": "Translate<Simplified Video>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -184,7 +184,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 6,
-                "name": "翻译校对<Simplified Video>",
+                "name": "Correction<Simplified Video>",
                 "quality": [1, 2, 3],
                 "weight": 25,
             }]
@@ -210,7 +210,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 2,
-                "name": "文案编辑<State StructuredVideo>",
+                "name": "File Edit<State StructuredVideo>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -218,21 +218,21 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 3,
-                "name": "文案审核<State StructuredVideo>",
+                "name": "File InReview<State StructuredVideo>",
                 "quality": [1, 2, 3],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 4,
-                "name": "配音<State StructuredVideo>",
+                "name": "Voice<State StructuredVideo>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 5,
-                "name": "翻译<State StructuredVideo>",
+                "name": "Translate<State StructuredVideo>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -240,7 +240,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 6,
-                "name": "翻译校对<State StructuredVideo>",
+                "name": "Correction<State StructuredVideo>",
                 "quality": [1, 2, 3],
                 "weight": 25,
             }]
@@ -266,7 +266,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 2,
-                "name": "文案编辑<Create StructedVideo>",
+                "name": "File Edit<Create StructedVideo>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -274,21 +274,21 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 3,
-                "name": "文案审核<Create StructedVideo>",
+                "name": "File InReview<Create StructedVideo>",
                 "quality": [1, 2, 3],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 4,
-                "name": "配音<Create StructedVideo>",
+                "name": "Voice<Create StructedVideo>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 5,
-                "name": "翻译<Create StructedVideo>",
+                "name": "Translate<Create StructedVideo>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -296,7 +296,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 6,
-                "name": "翻译校对<Create StructedVideo>",
+                "name": "Correction<Create StructedVideo>",
                 "quality": [1, 2, 3],
                 "weight": 25,
             }]
@@ -322,7 +322,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 2,
-                "name": "文案编辑<Documentary>",
+                "name": "File Edit<Documentary>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -330,21 +330,21 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 3,
-                "name": "文案审核<Documentary>",
+                "name": "File InReview<Documentary>",
                 "quality": [1, 2, 3],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 4,
-                "name": "配音<Documentary>",
+                "name": "Voice<Documentary>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 5,
-                "name": "翻译<Documentary>",
+                "name": "Translate<Documentary>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -352,7 +352,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 6,
-                "name": "翻译校对<Documentary>",
+                "name": "Correction<Documentary>",
                 "quality": [1, 2, 3],
                 "weight": 25,
             }]
@@ -378,7 +378,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 2,
-                "name": "文案编辑<EmergencyVideo>",
+                "name": "File Edit<EmergencyVideo>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -386,21 +386,21 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 3,
-                "name": "文案审核<EmergencyVideo>",
+                "name": "File InReview<EmergencyVideo>",
                 "quality": [1, 2, 3],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 4,
-                "name": "配音<EmergencyVideo>",
+                "name": "Voice<EmergencyVideo>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 5,
-                "name": "翻译<EmergencyVideo>",
+                "name": "Translate<EmergencyVideo>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -408,7 +408,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 6,
-                "name": "翻译校对<EmergencyVideo>",
+                "name": "Correction<EmergencyVideo>",
                 "quality": [1, 2, 3],
                 "weight": 25,
             }]
@@ -434,7 +434,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 2,
-                "name": "文案编辑<Interview Video>",
+                "name": "File Edit<Interview Video>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -442,21 +442,21 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 3,
-                "name": "文案审核<Interview Video>",
+                "name": "File InReview<Interview Video>",
                 "quality": [1, 2, 3],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 4,
-                "name": "配音<Interview Video>",
+                "name": "Voice<Interview Video>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "weight": 15,
             }, {
                 "submit": True,
                 "level": 3,
                 "value": 5,
-                "name": "翻译<Interview Video>",
+                "name": "Translate<Interview Video>",
                 "quality": [1, 2, 3, 4, 5, 6, 7, 8, 9],
                 "words": 0,
                 "weight": 15,
@@ -464,7 +464,7 @@ submit_frame = {
                 "submit": True,
                 "level": 3,
                 "value": 6,
-                "name": "翻译校对<Interview Video>",
+                "name": "Correction<Interview Video>",
                 "quality": [1, 2, 3],
                 "weight": 25,
             }]
@@ -533,7 +533,7 @@ def get_count(iterables):
 def text_short(text, width, placeholder):
     return text[:width] + textwrap.shorten(text=text[width:], width=width, placeholder=placeholder)
 
-# 	Design, 文案编辑, 文案审核, 配音, 翻译, 翻译校对
+# 	Design, File Edit, File InReview, Voice, Translate, Correction
 
 
 def account_operation_points(submit, keyword):
@@ -583,7 +583,7 @@ def team_points(team):
     submits = team.submits
     total = 0
     for submit in submits:
-        if submit.submit_status.name == "通过":
+        if submit.submit_status.name == "Pass":
             for act_opt in submit.account_operations:
                 total += act_opt.point
     return total
@@ -598,14 +598,14 @@ def my_points(submits, is_member):
 
     if is_member:
         for submit in submits:
-            if submit.submit_status.name == "通过":
+            if submit.submit_status.name == "Pass":
                 for act_opt in submit.account_operations:
                     if act_opt.account_id == current_user.id:
                         total_points += act_opt.point
         return total_points
     else:
         for submit in submits:
-            if submit.submit_status.name == "通过":
+            if submit.submit_status.name == "Pass":
                 for act_opt in submit.account_operations:
                     total_points += act_opt.point
         return total_points
@@ -618,7 +618,7 @@ def member_points(member):
     submits = team.submits
     total = 0
     for submit in submits:
-        if submit.submit_status.name == "通过":
+        if submit.submit_status.name == "Pass":
             for act_opt in submit.account_operations:
                 if act_opt.account_id == member.id:
                     total += act_opt.point
@@ -691,7 +691,7 @@ def create_app():
 
         # Create Database Models
         if app.config["FLASK_ENV"] == "development":
-            print('😍开发模式清除，重建Number据库😍')
+            print('😍开发模式清除，重建NumberDatabase😍')
             db.drop_all()
         db.create_all()
 

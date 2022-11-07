@@ -1,4 +1,4 @@
-参考 https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-an-ubuntu-22-04-server 设置虚拟环境
+Check考 https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-an-ubuntu-22-04-server Setting虚拟环境
 
 Step 1 — Setting Up Python 3,
 1,  Ubuntu 22.04 and other versions of Debian Linux ship with Python 3 pre-installed. To make sure that your versions are up-to-date, update your local package index:
